@@ -1,0 +1,28 @@
+@import url(../components/filter.css);
+
+#page-header {
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(59, 33, 20, .6)), to(rgba(59, 33, 20, .6))),
+		url(/images/bg/pages/products_category/page_header.jpg);
+    background-image: linear-gradient(to right, rgba(59, 33, 20, .6), rgba(59, 33, 20, .6)),
+		url(/images/bg/pages/products_category/page_header.jpg);
+}
+
+.carousel-indicators li{
+    border: 1px solid #6e4e36;
+    background-color: #937661;
+}
+
+.carousel-indicators .active{
+    background-color: #937661;
+    width: 14px;
+    height: 14px;
+}
+
+#myModal .modal-body{
+    text-align: center;
+}
+
+#myModal .modal-body input{
+    width: 50%;
+    margin: 0px auto 0px auto;
+}

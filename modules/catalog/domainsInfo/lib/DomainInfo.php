@@ -63,7 +63,8 @@ class DomainInfo extends \core\modules\base\ModuleDecorator
 	
 	public function getGood()
 	{
-		return \modules\catalog\CatalogFactory::getInstance()->getGoodById($this->catalogId);
+        $goodId = $this->getObjectInfo()['objectId'];
+		return \modules\catalog\CatalogFactory::getInstance()->getGoodById($goodId);
 	}
 	
 	public function getParams()
@@ -79,5 +80,20 @@ class DomainInfo extends \core\modules\base\ModuleDecorator
 	public function getReviews()
     {
         return (new Reviews())->filterByDomainInfoId($this->id);
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

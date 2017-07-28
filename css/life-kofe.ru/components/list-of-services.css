@@ -1,0 +1,27 @@
+.list-of-sevices picture {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 135px;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.list-of-sevices figcaption {
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.list-of-sevices .img-circle>img {
+    vertical-align: initial;
+}

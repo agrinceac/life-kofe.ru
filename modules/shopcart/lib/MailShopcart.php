@@ -9,7 +9,7 @@ class MailShopcart extends \core\mail\MailBase
 	private $shopcart;
 
 	private $rules = array(
-			'name, family, parentName, phone, paymentType' => array(
+			'name, family, phone' => array(
 				'validation' => array('_validNotEmpty'),
 			),
 			'email' => array(
@@ -37,10 +37,6 @@ class MailShopcart extends \core\mail\MailBase
 
 	public function MailShopcartToAdmin()
 	{
-	    if(isset($this->data['lift']))
-            if($this->data['lift'] != 'null')
-                $this->rules = array_merge ($this->rules, $this->shippingRules);
-
 		if (!$this->_beforeChange($this->data, array_keys($this->data)))
 			return false;
 
@@ -51,7 +47,7 @@ class MailShopcart extends \core\mail\MailBase
 				$managers[] = $manager->getUserData()['email'];
 
 		$managers[] = $this->adminEmail;
-		$managers[] = $this->bccEmail;
+        \core\utils\Utils::isEmail($this->bccEmail) ? $managers[] = $this->bccEmail : '';
 
 		$res = $this->From($this->noreplyEmail)
 				->To($managers)
@@ -66,17 +62,17 @@ class MailShopcart extends \core\mail\MailBase
 		return $res;
 	}
 
-	public function MailShopcartToClient()
-	{
-		$res = $this->From($this->noreplyEmail)
-				->To($this->data['email'])
-				->Subject('Заказ с сайта  '.SEND_FROM)
-				->Content('data', $this->data)
-				->Content('shopcart', $this->shopcart)
-				->BodyFromFile('shopcartMailToClient.tpl')
-				->Send();
-		if($res)
-			return 1;
-		throw new \Exception('Error mail() in '.get_class($this).'!');
-	}
+//	public function MailShopcartToClient()
+//	{
+//		$res = $this->From($this->noreplyEmail)
+//				->To($this->data['email'])
+//				->Subject('Заказ с сайта  '.SEND_FROM)
+//				->Content('data', $this->data)
+//				->Content('shopcart', $this->shopcart)
+//				->BodyFromFile('shopcartMailToClient.tpl')
+//				->Send();
+//		if($res)
+//			return 1;
+//		throw new \Exception('Error mail() in '.get_class($this).'!');
+//	}
 }

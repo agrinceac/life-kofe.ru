@@ -1,0 +1,33 @@
+.options-box {
+    /*margin-bottom: 24px;*/
+    min-height: 280px;
+}
+
+.options-box table {
+    color: #937661;
+    font-size: 14px;
+}
+
+.options-box table td {
+    padding-bottom: 4px;
+}
+
+.options-box table tr>td:last-child {
+    color: #6d4d36;
+    min-width: 70px;
+}
+
+@media (max-width: 768px) {
+    .options-box h3 {
+        text-align: center;
+    }
+
+    .options-box table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.orderMashine{
+    margin-bottom: 60px;
+}

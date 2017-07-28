@@ -8,18 +8,18 @@
 					<td class="first">Имя:</td>
 					<td><input type="text" name="name" value="<?=$object->getName()?>" /></td>
 				</tr>
-				<tr>
-					<td class="first">Описание:</td>
-					<td><textarea name="description" cols="95" rows="10"><?=$object->description?></textarea>
-				</tr>
-				<tr>
-					<td class="first">Текст:</td>
-					<td><textarea name="text" cols="95" rows="40" style="height: 440px;"><?=$object->text?></textarea>
-				</tr>
-				<tr>
-					<td class="first">Youtube видео:</td>
-					<td><input name="video" style="width:498px;" value="<?=$object->video?>">
-				</tr>
+<!--				<tr>-->
+<!--					<td class="first">Описание:</td>-->
+<!--					<td><textarea name="description" cols="95" rows="10">--><?//=$object->description?><!--</textarea>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td class="first">Текст:</td>-->
+<!--					<td><textarea name="text" cols="95" rows="40" style="height: 440px;">--><?//=$object->text?><!--</textarea>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td class="first">Youtube видео:</td>-->
+<!--					<td><input name="video" style="width:498px;" value="--><?//=$object->video?><!--">-->
+<!--				</tr>-->
 			</table>
 		</div>
 	</div><!--main_param-->
@@ -27,9 +27,9 @@
 		<div class="col_in">
 			<p class="title">Дополнительные параметры:</p>
 			<table width="100%">
-				<tr>
+				<tr class="hide">
 					<td class="first">Код:</td>
-					<!--<td><input name="code" value="<?//=$object->getCode()?>" /></td>-->
+<!--					<td><input name="code" value="--><?//=$object->getCode()?><!--" /></td>-->
 					<td><?= is_numeric($object->getCode()) ? $object->getCode() : \core\db\Db::getNextId('tbl_catalog')?></td>
 					<td><input type="hidden" name="code" value="<?= is_numeric($object->getCode()) ? $object->getCode() : \core\db\Db::getNextId('tbl_catalog')?>" /></td>
 				</tr>
@@ -71,29 +71,33 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<td class="first">Серия:</td>
-					<td>
-						<?= $this->getSeriaIdSelect($object->fabricatorId)?>
-					</td>
-				</tr>
-				<tr>
-					<td class="first">Дополнительные категории:</td>
-					<td>
-						<select name="additionalCategories[]" multiple="multiple" class="additionalCategories" style="width:150px;">
-						<?if ($objects->getMainCategories()->count()): foreach($objects->getMainCategories() as $categoryObject):?>
-						<optgroup label="<?=$categoryObject->name?>">
-							<?php if ($categoryObject->getChildren()): foreach($categoryObject->getChildren() as $children):?>
-							<option value="<?=$children->id?>" <?=   isset($object->id)   ?   (in_array($children->id, $object->additionalCategoriesArray)) ? 'selected' : ''   :    '' ?>><?=$children->name?></option>
-								<?php if ($children->getChildren()): foreach($children->getChildren() as $children2):?>
-							<option value="<?=$children2->id?>" <?=   isset($object->id)   ?   (in_array($children->id, $object->additionalCategoriesArray)) ? 'selected' : ''   :    '' ?>>&nbsp;&nbsp;|-&nbsp;<?=$children2->name?></option>
-								<?php endforeach; endif;?>
-							<?php endforeach; endif;?>
-						</optgroup>
-						<?php endforeach; endif;?>
-						</select>
-					</td>
-				</tr>
+<!--				<tr>-->
+<!--					<td class="first">Серия:</td>-->
+<!--					<td>-->
+<!--						--><?//= $this->getSeriaIdSelect($object->fabricatorId)?>
+<!--					</td>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td class="first">Дополнительные категории:</td>-->
+<!--					<td>-->
+<!--						<select name="additionalCategories[]" multiple="multiple" class="additionalCategories" style="width:150px;">-->
+<!--						--><?//if ($objects->getMainCategories()->count()): foreach($objects->getMainCategories() as $categoryObject):?>
+<!--						<optgroup label="--><?//=$categoryObject->name?><!--">-->
+<!--							--><?php //if ($categoryObject->getChildren()): foreach($categoryObject->getChildren() as $children):?>
+<!--							<option value="--><?//=$children->id?><!--" --><?//=   isset($object->id)   ?   (in_array($children->id, $object->additionalCategoriesArray)) ? 'selected' : ''   :    '' ?>
+<!--                                --><?//=$children->name?>
+<!--                            </option>-->
+<!--								--><?php //if ($children->getChildren()): foreach($children->getChildren() as $children2):?>
+<!--							<option value="--><?//=$children2->id?><!--" --><?//=   isset($object->id)   ?   (in_array($children->id, $object->additionalCategoriesArray)) ? 'selected' : ''   :    '' ?>
+<!--                                &nbsp;&nbsp;|-&nbsp;-->
+<!--                                --><?//=$children2->name?><!--</option>-->
+<!--								--><?php //endforeach; endif;?>
+<!--							--><?php //endforeach; endif;?>
+<!--						</optgroup>-->
+<!--						--><?php //endforeach; endif;?>
+<!--						</select>-->
+<!--					</td>-->
+<!--				</tr>-->
 				<tr>
 					<td class="first">Дата:</td>
 					<td><input class="date" name="date" title="Date" value="<?=$object->date?>"/></td>
@@ -102,10 +106,10 @@
 					<td class="first">Приоритет:</td>
 					<td><input name="priority" value="<?=$object->priority; ?>" /></td>
 				</tr>
-				<tr>
-					<td class="first">Оплата карточкой:</td>
-					<td><input type="checkbox" name="card" value="1" style="width: 20px; height: 20px;" <?=($object->card)?'checked':'';?> /></td>
-				</tr>
+<!--				<tr>-->
+<!--					<td class="first">Оплата карточкой:</td>-->
+<!--					<td><input type="checkbox" name="card" value="1" style="width: 20px; height: 20px;" --><?//=($object->card)?'checked':'';?><!-- /></td>-->
+<!--				</tr>-->
 
 				<?if(isset($object->id)):?>
 				<?if($object->isDana()):?>

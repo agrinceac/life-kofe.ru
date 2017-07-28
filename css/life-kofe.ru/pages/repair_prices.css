@@ -1,0 +1,11 @@
+.table>tbody>tr>td:first-child {
+    text-align: left;
+}
+
+.group-of-panels .panel-body {
+    min-height: 170px;
+}
+
+dl dt {
+    color: #666;
+}

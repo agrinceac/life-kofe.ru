@@ -1,0 +1,38 @@
+header.has-padding {
+    padding-bottom: 0;
+}
+
+.basket h4 {
+    font-weight: initial;
+}
+
+.basket {
+    border: #E2D3B4 1px solid;
+}
+
+.basket .table>thead>tr {
+    background-color: #E2D3B4;
+    color: #6d4d36;
+}
+
+.basket .table>tbody>tr>td {
+    border-bottom: #E2D3B4 1px solid !important;
+}
+
+.basket .model {
+    color: #C4A78A;
+}
+
+.basket .price {
+    font-size: 20px;
+}
+
+.basket .table {
+    min-width: 930px;
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+    border-width: 0;
+}

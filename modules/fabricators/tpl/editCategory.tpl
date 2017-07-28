@@ -97,15 +97,14 @@
 					<td class="first">Приоритет:</td>
 					<td><input name="priority" value="<?=$object->priority; ?>" /></td>
 				</tr>
-				<tr>
-					<td class="first">Шаблон:</td>
-					<td><?=$object->template; ?></td>
-				</tr>
-				<tr>
+<!--				<tr>-->
+<!--					<td class="first">Шаблон:</td>-->
+<!--					<td>--><?//=$object->template; ?><!--</td>-->
+<!--				</tr>-->
+				<tr class="hide">
 					<td class="first">Домен:</td>
 					<td>
 						<select name="domainAlias" style="width:150px;">
-							<option></option>
 							<?if (\core\Configurator::getInstance()->url->domains->getArray()): foreach(\core\Configurator::getInstance()->url->domains->getArray() as $domainAlias=>$value):?>
 							<option value="<?=$domainAlias?>" <?= $domainAlias==$object->domainAlias ? 'selected' : ''?>><?=$domainAlias?></option>
 							<?endforeach; endif?>

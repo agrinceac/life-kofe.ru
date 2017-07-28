@@ -1,0 +1,52 @@
+@import url(../components/options-box.css);
+
+@import url(../components/list-of-services.css);
+
+#how-to-get-a-coffee-machine {
+    padding-top: 24px;
+}
+
+.list-of-broken-coffee-machines .img-thumbnail {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-of-broken-coffee-machines .img-thumbnail>img {
+    margin-top: -50px;
+}
+
+.list-of-broken-coffee-machines .btn {
+    min-width: 180px;
+}
+
+@media (max-width: 991px) {
+    .list-of-broken-coffee-machines picture {
+        margin-bottom: 24px;
+    }
+
+    .list-of-broken-coffee-machines figcaption {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .list-of-coffee-machines>li {
+        min-height: 565px;
+    }
+
+    .list-of-broken-coffee-machines>li:first-child {
+        margin-bottom: 60px;
+    }
+
+    #how-to-get-a-coffee-machine {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    #how-to-get-a-coffee-machine>h2 {
+        margin-top: 0;
+    }
+}

@@ -19,7 +19,7 @@ class CatalogFrontController extends \controllers\base\Controller
 	protected $catalog;
 
 	public function __construct()
-	{
+	{;
 		parent::__construct();
 		$this->_config = new \modules\catalog\catalog\lib\CatalogItemConfig();
 		$this->objectClass = $this->_config->getObjectClass();

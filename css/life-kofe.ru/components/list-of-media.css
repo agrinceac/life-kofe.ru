@@ -1,0 +1,22 @@
+.list-of-media>li>figure {
+    -webkit-box-shadow: 0px 2px 4px rgba(36,0,0,.2);
+    box-shadow: 0px 2px 4px rgba(36,0,0,.2);
+    border-width: 0;
+    border-radius: 3px;
+    padding: 24px;
+}
+
+.list-of-media>li>.thumbnail>picture {
+    display: block;
+    padding: 12px 0;
+}
+
+.list-of-media>li>.thumbnail>figcaption {
+    min-height: 85px;
+}
+
+@media (min-width: 768px) {
+    .list-of-media .media {
+        margin-bottom: 0;
+    }
+}

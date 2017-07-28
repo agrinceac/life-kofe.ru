@@ -10,11 +10,6 @@ class CatalogCategoryConfig extends \core\modules\base\ModuleConfig
 		\core\traits\validators\Sitemap,
 		\core\traits\adapters\Sitemap;
 
-    const SPALNI_CATEGORY_ID = 104;
-    const GOSTINNYE_CATEGORY_ID = 108;
-    const DETSKIE_CATEGORY_ID = 107;
-    const STENKI_CATEGORY_ID = 126;
-    const SHKAFI_DLYA_SPALNI_CATEGORY_ID = 127;
 
 	protected $objectClass = '\modules\catalog\categories\CatalogCategory';
 	protected $objectsClass = '\modules\catalog\categories\CatalogCategories';
@@ -117,9 +112,9 @@ class CatalogCategoryConfig extends \core\modules\base\ModuleConfig
 				'validation' => array('_validChangeFreq'),
 				'adapt' => '_adaptChangeFreq',
 			),
-            'sorting, sortingKey' => array(
-                'validation' => array('_validNotEmpty')
-            ),
+//            'sorting, sortingKey' => array(
+//                'validation' => array('_validNotEmpty')
+//            ),
 		);
 	}
 

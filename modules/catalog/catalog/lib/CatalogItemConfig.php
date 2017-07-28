@@ -9,18 +9,13 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 		\core\traits\validators\Sitemap,
 		\core\traits\adapters\Sitemap;
 
-	const ACTIVE_STATUS_ID  = 1;
-	const NEW_STATUS_ID = 3;
-	const SUPER_PRICE_STATUS_ID = 4;
-	const TOP_SELL_ID = 5;
-    const AKCIA_ID = 6;
-    const SALE_ID = 7;
-	const BLOCKED_STATUS_ID = 9;
-	const REMOVED_STATUS_ID = 10;
+    const KOFE_MASHINES_CATEGORY_ID =8;
+    const KOFE_CATEGORY_ID =9;
+    const SPARE_PARTS_CATEGORY_ALIAS = 'spare_parts';
 
-    const MATERIAL_PARAMETERS_ID= 48;
-    const CORPUS_PARMETERS_ID = 53;
-    const FASAD_PARAMETERS_ID = 54;
+	const ACTIVE_STATUS_ID  = 1;
+	const BLOCKED_STATUS_ID = 2;
+	const REMOVED_STATUS_ID = 3;
 
 	protected $objectClass  = '\modules\catalog\catalog\lib\CatalogItem';
 	protected $objectsClass = '\modules\catalog\catalog\lib\Catalog';
@@ -108,11 +103,19 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 	}
 
 	public function getNewStatusId(){return self::NEW_STATUS_ID;}
-	public function getSuperPriceStatusId(){return self::SUPER_PRICE_STATUS_ID;}
-	public function getTopSellStatusId(){return self::TOP_SELL_ID;}
-    public function getSaleStatusId(){return self::SALE_ID;}
-    public function getAkciaStatusId(){return self::AKCIA_ID;}
-    public function getMaterialParametersId(){return self::MATERIAL_PARAMETERS_ID;}
-    public function getCorpusParametersId(){return self::CORPUS_PARMETERS_ID;}
-    public function getFasadParametersId(){return self::FASAD_PARAMETERS_ID;}
+
+    public function getSparePartsCategoryAlias()
+    {
+        return self::SPARE_PARTS_CATEGORY_ALIAS;
+    }
+
+    public function getSparePartsCategory()
+    {
+        return (new Catalog())->getCategories()->getObjectByAlias($this->getSparePartsCategoryAlias());;
+    }
+
+    public function getHiddenCategoriesId()
+    {
+        return [self::KOFE_CATEGORY_ID, self::KOFE_MASHINES_CATEGORY_ID];
+    }
 }

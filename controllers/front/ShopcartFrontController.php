@@ -73,7 +73,7 @@ class ShopcartFrontController extends \controllers\base\ShopcartBaseController
 		$this->setMetaData('Оформление заказа', 'Оформление заказа', 'Оформление заказа')
 			->setLevel('Оформление заказа')
 //			->setContent('content', $this->getContent('myOrder'))
-			->setContent('content', $this->getShopcartGoodsTableContent(''))
+//			->setContent('content', $this->getShopcartGoodsTableContent(''))
 			->includeTemplate('/shopcart/shopcart');
 	}
 

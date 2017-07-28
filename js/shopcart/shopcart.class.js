@@ -62,7 +62,7 @@ var shopcart = function (sources) {
         var quantity = 1;
 
         if( isByeMoreQuantity )
-            quantity = $('[data-objectId=' + objectId + '].byeMoreQuantity').html();
+            quantity = $('[data-objectId=' + objectId + '].byeMoreQuantity').val();
 
         $.ajax({
             url: that.ajax.addToShopcart,
@@ -78,15 +78,8 @@ var shopcart = function (sources) {
                 if(data == 1){
                     that.updateShopcartBar();
                     if(isByeMoreQuantity)
-                        that.updateByeMoreQuantityBlock(objectId);
-                    if(typeof dataLayer != "undefined"){
-                        if($(object).attr('data-dataLayerPushEvent') != "undefined")
-                            if($(object).attr('data-dataLayerPushEvent') != ""){
-                                dataLayer.push({"event": $(object).attr('data-dataLayerPushEvent')});
-                                dataLayer.push({"event": '"' + $(object).attr('data-dataLayerPushEvent') + '"'});
-                                console.log("event : " + $(object).attr('data-dataLayerPushEvent'));
-                            }
-                    }
+                        $('[data-objectId=' + objectId + '].byeMoreQuantity').val(1);
+                    //     that.updateByeMoreQuantityBlock(objectId);
                 }
                 else
                     alert('Error while trying to add good in shopcart');
@@ -103,7 +96,7 @@ var shopcart = function (sources) {
             type: 'POST',
             success: function(data){
                 if(data)
-                    shopcartBar$.replaceWith(data);
+                    $('.shopcartBarPlace').html(data);
                 else
                     alert('Error while trying to update shopcart bar');
             }
@@ -176,28 +169,18 @@ var shopcart = function (sources) {
         var that = this;
         that.loader.setLoader(object);
 
-        var shippingId = $('[name="shipping"]:checked').attr('id');
-        var liftId = $('[name="lift"]:checked:visible').attr('id');
+        // var shippingId = $('[name="shipping"]:checked').attr('id');
 
         var data = {
-            'shipping' : $("label[for='"+shippingId+"']").html(),
             'name' : $('[name=name]').val(),
             'family' : $('[name=family]').val(),
-            'parentName' : $('[name=parentName]').val(),
             'phone' : $('[name=phone]').val(),
-            'addPhone' : $('[name=addPhone]').val(),
             'email' : $('[name=email]').val(),
 
-            'lift' : $("label[for='"+liftId+"']").html(),
-            'index' : $('[name=index]:visible').val(),
-            'region' : $('[name=region]:visible').val(),
             'city' : $('[name=city]:visible').val(),
             'street' : $('[name=street]:visible').val(),
-            'block' : $('[name=block]:visible').val(),
             'home' : $('[name=home]:visible').val(),
             'flat' : $('[name=flat]:visible').val(),
-            'paymentType' : $('[name=paymentType]:visible').val(),
-
         };
 
         $.ajax({
@@ -207,72 +190,48 @@ var shopcart = function (sources) {
             dataType: 'json',
             success: function(data){
                 that.loader.getElement();
-                if(data){
-                    if( $.isNumeric(data)  ||  $.isNumeric(data.orderSum) ){
-                        that.errorsSendOrder.reset();
-                        $((new shopcartHandler()).sources.shopcartContent).hide();
-
-                        if( $.isNumeric(data.orderSum) )
-                            that.fillYandexPayForm(data);
-                        else
-                            $('.successBlockHybrid').show();
-
-                        that.updateShopcartBar();
-                        if(typeof dataLayer != "undefined"){
-                            if(object.attr('data-dataLayerPushEvent') != "undefined")
-                                if(object.attr('data-dataLayerPushEvent') != ""){
-                                    dataLayer.push({"event": object.attr('data-dataLayerPushEvent')});
-                                    dataLayer.push({"event": '"' + object.attr('data-dataLayerPushEvent') + '"'});
-                                    console.log("event : " + object.attr('data-dataLayerPushEvent'));
-                                }
-                        }
-
-                    }
-                    else
-                        that.errorsSendOrder.show(data);
+                if(data == 1){
+                    that.errorsSendOrder.reset();
+                    $((new shopcartHandler()).sources.shopcartContent).hide();
+                    $('.successBlockHybrid').removeClass('hide');
+                    that.updateShopcartBar();
                 }
                 else
-                    alert('Error while trying to send order');
+                    that.errorsSendOrder.show(data);
             }
         });
-    };
-
-    this.fillYandexPayForm = function (data) {
-        $('.yandex_s_p').find('input[name="sum"]').val(data.orderSum);
-        $('.yandex_s_p').find('.orderSum').html(data.orderSum);
-        $('.yandex_s_p').find('input[name="customerNumber"]').val(data.orderName);
-        $('.yandex_s_p').find('input[name="custName"]').val(data.orderPhone);
-        $('.yandex_s_p').find('input[name="custEmail"]').val(data.orderEmail);
-        $('.yandex_s_p').show();
     };
 
     this.changeQuantity = function (object) {
         var that = this;
-        that.loader.setLoader( object );
-        $.ajax({
-            url: that.ajax.validateQuantity,
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                'goodId' : $(object).attr('data-goodId'),
-                'goodClass' : $(object).attr('data-goodClass'),
-                'goodCode' : $(object).attr('data-goodCode'),
-                'quantity' : $(object).attr('data-quantity')
-            },
-            success: function(data){
-                that.loader.getElement();
-                if(data == 1){
-                    that.errorsChangeQuantity.reset();
-                    that.changeQuantityAction(object);
-                }
-                else
-                    that.errorsChangeQuantity.show(data);
-            }
-        });
+        that.changeQuantityAction(object);
+
+        // that.loader.setLoader( object );
+        // $.ajax({
+        //     url: that.ajax.validateQuantity,
+        //     type: 'POST',
+        //     dataType: 'json',
+        //     data: {
+        //         'goodId' : $(object).attr('data-goodId'),
+        //         'goodClass' : $(object).attr('data-goodClass'),
+        //         'goodCode' : $(object).attr('data-goodCode'),
+        //         'quantity' : $(object).attr('data-quantity')
+        //     },
+        //     success: function(data){
+        //         that.loader.getElement();
+        //         if(data == 1){
+        //             that.errorsChangeQuantity.reset();
+        //             that.changeQuantityAction(object);
+        //         }
+        //         else
+        //             that.errorsChangeQuantity.show(data);
+        //     }
+        // });
     };
 
     this.changeQuantityAction = function (object) {
         var that = this;
+        that.loader.setLoader( object );
         $.ajax({
             url: that.ajax.changeQuantity,
             type: 'POST',
@@ -280,9 +239,10 @@ var shopcart = function (sources) {
                 'goodId' : $(object).attr('data-goodId'),
                 'goodClass' : $(object).attr('data-goodClass'),
                 'goodCode' : $(object).attr('data-goodCode'),
-                'quantity' : $(object).attr('data-quantity')
+                'quantity' : $(object).val()
             },
             success: function(data){
+                that.loader.getElement();
                 if(data == 1){
                     that.updateShopcartGoodsTable();
                     that.updateShopcartBar();

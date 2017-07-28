@@ -5,7 +5,8 @@ use modules\catalog\prices\lib\PricesObject;
 class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IObjectToFrontend, \interfaces\IGoodForShopcart
 {
 	use \core\traits\RequestHandler,
-		\core\traits\objects\SiteMapPriority;
+		\core\traits\objects\SiteMapPriority,
+        \core\traits\ObjectPool;
 
 	function __construct($objectId)
 	{
@@ -274,11 +275,11 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
 
     public function getShowPrice()
     {
-        if($this->getOffer())
-            return $this->getNativePriceByQuantity(1) - $this->getOffer()->getDiscountSum();
-        if($this->isSubGoodsExists()){
-            return $this->getSubgoods()->getCost();
-        }
+//        if($this->getOffer())
+//            return $this->getNativePriceByQuantity(1) - $this->getOffer()->getDiscountSum();
+//        if($this->isSubGoodsExists()){
+//            return $this->getSubgoods()->getCost();
+//        }
         return $this->getPriceByMinQuantity();
     }
 
@@ -293,5 +294,18 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
             return $price;
         }
         return (new PricesObject($this))->getPriceByMinQuantity()->getOldPrice();
+    }
+
+    public function isHidden()
+    {
+//        if( in_array($this->categoryId, $this->getConfig()->getHiddenCategoriesId()) )
+//            return true;
+//
+//        if($this->getCategory()->parentId != 0)
+//            if( in_array($this->getCategory()->getParent(), $this->getConfig()->getHiddenCategoriesId()) )
+//                return true;
+//
+//        return false;
+        return $this->getCategory()->isHidden();
     }
 }

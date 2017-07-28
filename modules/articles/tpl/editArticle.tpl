@@ -29,6 +29,10 @@
 						</select>
 					</td>
 				</tr>
+                <tr>
+                    <td class="first">Показывать<br>хлебные крошки:</td>
+                    <td><br><input type="checkbox" name="breadcrumbsShow" <?= $article->breadcrumbsShow ? 'checked' : ''?>></td>
+                </tr>
 				<tr>
 					<td class="first">Meta Title:</td>
 					<td><input type="text" name="metaTitle" value="<?=$article->metaTitle?>" />

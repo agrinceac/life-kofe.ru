@@ -395,7 +395,8 @@ abstract class ModuleObjects extends ModuleAbstract implements \Iterator, \Count
 
 	public function getIdStringInModuleObjects()
 	{
-		if(empty($this->getIdArray()))
+	    $idArray = $this->getIdArray();
+		if(empty($idArray))
 			return false;
 		$ids = '';
 		foreach($this->getIdArray() as $item)

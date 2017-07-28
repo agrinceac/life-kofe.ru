@@ -13,6 +13,10 @@ class MainOrderFrontController extends \controllers\base\Controller
 		'ajaxSendQuickOrderForm',
 		'getOrdersByClientIdAndArchiveStatus',
 		'getOrderByNr',
+        'orderSpare',
+        'contactsQuestion',
+        'repairsQuestion',
+        'orderMashine'
 	);
 
 	public function  __construct()
@@ -121,22 +125,10 @@ class MainOrderFrontController extends \controllers\base\Controller
 
 	protected function sendOrderByOneClick ()
 	{
-		$post = $this->getPOST();
-		if ( $post->phoneNumber ) {
-			if (!strripos($post->phoneNumber, '_')  &&  $this->_validCorrectCapcha($this->getPOST()['capcha']) === true) {
-				$newOrderByOneClickMail = new \modules\mailers\OrderByOneClickMail();
-				$result = $newOrderByOneClickMail->sendPhoneNumberToManagers($post->goodId, $post->phoneNumber);
-			} else {
-				$result = array( 'phoneNumber' => 'Вы ввели неверный номер телефона, попытайтесь пожалуйста еще раз' );
-			}
-		} else {
-			$result = array( 'phoneNumber' => 'Пожалуйста введите свой номер телефона' );
-		}
-
-        if( $this->_validCorrectCapcha($this->getPOST()['capcha']) !== true )
-            $result['capcha'] = 'Укажите верный результат';
-
-		$this->ajaxResponse($result);
+        $mail = new \modules\mailers\OrderByOneClickMail();
+        $res = $this->setObject($mail)
+            ->modelObject->sendPhoneNumberToManagers();
+        return $this->ajaxResponse($res ? $res : $this->modelObject->getErrors());
 	}
 
 	private function getContent($template, $data = null)
@@ -149,4 +141,36 @@ class MainOrderFrontController extends \controllers\base\Controller
 		ob_end_clean();
 		return $contents;
 	}
+
+    protected function orderSpare()
+    {
+        $mail = new \modules\mailers\OrderSpareMail();
+        $res = $this->setObject($mail)
+                    ->modelObject->sendToManagers();
+        return $this->ajaxResponse($res ? $res : $this->modelObject->getErrors());
+    }
+
+    protected function contactsQuestion()
+    {
+        $mail = new \modules\mailers\ContactsQuestionMail();
+        $res = $this->setObject($mail)
+            ->modelObject->sendToManagers();
+        return $this->ajaxResponse($res ? $res : $this->modelObject->getErrors());
+    }
+
+    protected function repairsQuestion()
+    {
+        $mail = new \modules\mailers\RepairsQuestionMail();
+        $res = $this->setObject($mail)
+            ->modelObject->sendToManagers();
+        return $this->ajaxResponse($res ? $res : $this->modelObject->getErrors());
+    }
+
+    protected function orderMashine()
+    {
+        $mail = new \modules\mailers\OrderMashineMail();
+        $res = $this->setObject($mail)
+            ->modelObject->sendToManagers();
+        return $this->ajaxResponse($res ? $res : $this->modelObject->getErrors());
+    }
 }

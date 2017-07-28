@@ -19,8 +19,8 @@ class ModalAskMail extends \core\mail\MailBase
 			if( \core\utils\Utils::isEmail($manager->getUserData()['email']))
 				$managers[] = $manager->getUserData()['email'];
 
-		$managers[] = $this->adminEmail;
-		$managers[] = $this->bccEmail;
+        $managers[] = $this->adminEmail;
+        \core\utils\Utils::isEmail($this->bccEmail) ? $managers[] = $this->bccEmail : '';
 
 		$res = $this->From($this->noreplyEmail)
 				->To($managers)

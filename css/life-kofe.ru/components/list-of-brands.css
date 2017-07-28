@@ -1,0 +1,27 @@
+.list-of-brands>li>a {
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-shadow: 0px 2px 4px rgba(36,0,0,.2);
+    box-shadow: 0px 2px 4px rgba(36,0,0,.2);
+    border-width: 0;
+    -webkit-transition: all .6s ease;
+    transition: all .6s ease;
+}
+
+.list-of-brands>li>a:hover {
+    -webkit-box-shadow: 0px 4px 8px rgba(36,0,0,.4);
+    box-shadow: 0px 4px 8px rgba(36,0,0,.4);
+}
+
+.list-of-brands>li>a img {
+    border-radius: 5px;
+}

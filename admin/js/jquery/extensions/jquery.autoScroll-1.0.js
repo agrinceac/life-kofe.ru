@@ -18,10 +18,12 @@
         //
         // //not supported for all versions end
 
+
+
         var dest = $(this)[0].offsetTop;
         if ($.isNumeric(dest)){
             dest = parseInt(dest) - parseInt(settings.paddingTop);
-            $('html,body').animate({scrollTop: dest}, settings.duration );
+            $('html,body').animate({scrollTop: dest}, parseInt(settings.duration) );
             if($.isFunction(settings.callback))
                 settings.callback(this);
         }

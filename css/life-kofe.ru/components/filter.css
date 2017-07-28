@@ -1,0 +1,83 @@
+section#filter {
+    padding: 0;
+}
+
+.filter {
+    background-color: #C5A88A;
+}
+
+.filter .form-name {
+    line-height: 50px;
+    margin-bottom: 0;
+    font-size: 1.1em;
+    white-space: nowrap;
+    color: #3b2114;
+}
+
+.filter-serach-box {
+    padding-top: 4px;
+}
+
+@media (max-width: 767px) {
+    .filter ul.row .btn,
+    .filter ul.row .form-control {
+        margin-bottom: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    .filter ul.row>[class*="col"] {
+        padding: 0 !important;
+    }
+
+    .filter ul.row .form-control:focus,
+    .filter ul.row .form-control {
+        border-radius: 0;
+        border-top-width: 0;
+        border-bottom-width: 0;
+        border-left-width: 0;
+        background-color: transparent;
+        color: #3A2014;
+        border-color: #3A2014;
+        -webkit-transition: none;
+        transition: none;
+        height: 50px;
+        padding-left: 8px;
+    }
+
+    .filter ul.row>li:first-child .form-control {
+        border-left-width: 1px;
+    }
+
+    .filter ul.row>li:nth-child(3) .form-control {
+        border-right-width: 0;
+    }
+
+    .filter ul.row .btn {
+        border-radius: 0;
+        background-color: #6E4E36;
+        color: rgba(255,255,255, .8);
+        border-color: transparent;
+        height: 50px;
+        min-width: initial;
+    }
+
+    .filter ul {
+        margin-bottom: 0;
+    }
+
+    .filter .form-group {
+        margin-bottom: 0;
+    }
+
+    .filter .filter-search {
+        font-style: italic;
+        border-width: 0;
+        border-radius: 0;
+    }
+}
+
+#searchBySpareNameSubmit{
+    cursor: pointer;
+    pointer-events: initial;
+}

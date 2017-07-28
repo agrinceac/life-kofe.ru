@@ -16,7 +16,7 @@
 					<script type="text/javascript" src="/modules/catalog/catalog/js/parametersSave.js"></script>
 					<script type="text/javascript" src="/modules/catalog/catalog/js/propertiesSave.js"></script>
 
-					<script type="text/javascript" src="/modules/catalog/catalog/js/selectFabricatorHandler.js"></script>
+<!--					<script type="text/javascript" src="/modules/catalog/catalog/js/selectFabricatorHandler.js"></script>-->
 
 					<form class="form<?= $object->id ? 'Edit' : 'Add'?>" action="/admin/catalog/<?= $object->id ? 'edit' : 'add'?>/" method="post" data-post-action="<?= $object->id ? 'none' : '/admin/catalog/catalogItem/'?>">
 						<?if ($object->id):?><input type="hidden" value="<?=$object->id?>" id="objectId"/><?endif;?>

@@ -5,9 +5,11 @@ try {
 
 	define('TYPE','front');
 
-	session_start();
+//	session_start();
 	include('includes/config.php');
 	$configurator = Configurator::getInstance();
+
+    session_start();
 
 	
 	// Start debug

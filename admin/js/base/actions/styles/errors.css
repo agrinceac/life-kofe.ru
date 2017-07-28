@@ -1,5 +1,5 @@
 .hint{ position:relative;}
-.hint_in{ position:absolute; top:0px; z-index:150;
+.hint_in{ position:absolute; top:0px; z-index:150; height: 26px;
 -webkit-border-radius: 6px;
 -moz-border-radius: 6px;
 border-radius: 6px;

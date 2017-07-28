@@ -1,0 +1,67 @@
+@import url(../components/list-of-brands.css);
+
+@import url(../components/list-of-services.css);
+
+#page-header {
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(59, 33, 20, .6)), to(rgba(59, 33, 20, .6))),
+			url(/images/bg/pages/repairs/page_header.jpg);
+    background-image: linear-gradient(to right, rgba(59, 33, 20, .6), rgba(59, 33, 20, .6)),
+			url(/images/bg/pages/repairs/page_header.jpg);
+}
+
+#repair-of-coffee-machines h4 {
+    font-weight: normal;
+}
+
+#find-out-the-prices-for-repairing-your-espresso-machine h2 {
+    text-transform: inherit;
+    margin-bottom: 36px;
+}
+
+.panel-primary {
+    border-color: #c6b5a8;
+}
+
+.list-of-brands.row {
+    margin-bottom: 24px;
+}
+
+@media (min-width: 1440px) {
+    #find-out-the-prices-for-repairing-your-espresso-machine,
+	#turnaround-time {
+        position: relative;
+    }
+
+    #find-out-the-prices-for-repairing-your-espresso-machine:before,
+	#turnaround-time:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 200px;
+        height: 260px;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+
+    #turnaround-time:before {
+        left: 0;
+        background-image: url(/images/bg/pages/repairs/coffee-beans-left.png);
+        background-position: top right;
+        top: -100px;
+    }
+
+    #find-out-the-prices-for-repairing-your-espresso-machine:before {
+        right: 0;
+        background-image: url(/images/bg/pages/repairs/coffee-beans-right.png);
+        background-position: top left;
+        top: -200px;
+    }
+}
+
+@media (max-width: 767px) {
+    #repair-of-coffee-machines .media-middle {
+        display: table-cell;
+        min-width: 90px;
+    }
+}

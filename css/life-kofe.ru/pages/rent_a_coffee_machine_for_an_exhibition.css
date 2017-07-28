@@ -1,0 +1,52 @@
+@import url(../components/list-of-services.css);
+
+@import url(../components/options-box.css);
+
+main header.has-padding {
+    padding-bottom: 0;
+}
+
+#how-to-count-the-amount-of-coffee {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.coffee-box {
+    margin-bottom: 24px;
+}
+
+.coffee-box .img-circle {
+    padding-top: 20px;
+    width: 120px;
+    height: 120px;
+}
+
+.coffee-box .img-circle var {
+    font-size: 36px;
+}
+
+.coffee-box figcaption {
+    padding-top: 24px;
+}
+
+.coffee-box figcaption img {
+    margin-bottom: 12px;
+}
+
+.list-of-sevices .img-circle {
+    border-width: 0;
+}
+
+.well {
+    border-radius: 0;
+    border-width: 0;
+    margin-bottom: 0;
+    padding: 36px;
+    background-color: rgba(0,0,0,.48);
+    color: rgba(255,255,255,.9);
+}
+
+.well strong,
+.well>h2 {
+    color: #fff;
+}

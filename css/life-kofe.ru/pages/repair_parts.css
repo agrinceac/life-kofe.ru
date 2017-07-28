@@ -1,0 +1,35 @@
+@import url(../components/filter.css);
+
+@import url(../components/list-of-brands.css);
+
+@import url(../components/list-of-services.css);
+
+#page-header {
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(59, 33, 20, .6)), to(rgba(59, 33, 20, .6))),
+            url(/images/bg/pages/repair_parts/page_header.jpg);
+    background-image: linear-gradient(to right, rgba(59, 33, 20, .6), rgba(59, 33, 20, .6)),
+            url(/images/bg/pages/repair_parts/page_header.jpg);
+}
+
+#search-for-spare-parts-for-type nav>ul>li {
+    line-height: 2.4em;
+}
+
+#buy-spare-parts-from-a-warehouse-in-moscow,
+#search-for-spare-parts-for-type {
+    padding-top: 0;
+}
+
+#contact-form h2 {
+    margin-top: 0;
+}
+
+.list-of-brands>li>a:hover,
+.list-of-brands>li>a {
+    -webkit-box-shadow: initial;
+    box-shadow: initial;
+}
+
+.list-of-brands>li>a:hover {
+    opacity: .8;
+}

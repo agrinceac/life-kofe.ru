@@ -97,38 +97,44 @@
 					<td class="first">Приоритет:</td>
 					<td><input name="priority" value="<?=$object->priority; ?>" /></td>
 				</tr>
-				<tr>
-					<td class="first">Шаблон:</td>
-					<td>
-						<select name="template">
-							<option <?=($object->template=='catalogListContent')?'selected':''?> value="catalogListContent" >Три колонки товаров</option>
-							<option <?=($object->template=='catalogVerticalListContent')?'selected':''?> value="catalogVerticalListContent">Одна колонка товаров</option>
-						</select>
-					</td>
-				</tr>
-                <tr><td colspan="2"><hr /></td></tr>
-                <tr>
-                    <td class="first">Сортировка по:</td>
-                    <td>
-                        <select name="sorting">
-                           <option></option>
-                            <?if ($sortingValuesTranslate): foreach($sortingValuesTranslate as $key=>$value):?>
-                                <option value="<?=$key?>" <?= $object->sorting==$key ? 'selected' : ''?>><?=$value?></option>
-                            <?endforeach; endif?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="first">Порядок сортировки:</td>
-                    <td>
-                        <select name="sortingKey">
-                            <option></option>
-                            <option value="up" <?= $object->sortingKey=='up' ? 'selected' : ''?>>вверх</option>
-                            <option value="down" <?= $object->sortingKey=='down' ? 'selected' : ''?>>вниз</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr><td colspan="2"><hr /></td></tr>
+<!--				<tr>-->
+<!--					<td class="first">Шаблон:</td>-->
+<!--					<td>-->
+<!--						<select name="template">-->
+<!--							<option --><?//=($object->template=='catalogListContent')?'selected':''?><!-- value="catalogListContent" >Три колонки товаров</option>-->
+<!--							<option --><?//=($object->template=='catalogVerticalListContent')?'selected':''?><!-- value="catalogVerticalListContent">Одна колонка товаров</option>-->
+<!--						</select>-->
+<!--					</td>-->
+<!--				</tr>-->
+<!--                <tr><td colspan="2"><hr /></td></tr>-->
+<!--                <tr>-->
+<!--                    <td class="first">Сортировка по:</td>-->
+<!--                    <td>-->
+<!--                        <select name="sorting">-->
+<!--                           <option></option>-->
+<!--                            --><?//if ($sortingValuesTranslate): foreach($sortingValuesTranslate as $key=>$value):?>
+<!--                                <option value="--><?//=$key?><!--" --><?//= $object->sorting==$key ? 'selected' : ''?>
+<!--                                    --><?//=$value?>
+<!--                                </option>-->
+<!--                            --><?//endforeach; endif?>
+<!--                        </select>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="first">Порядок сортировки:</td>-->
+<!--                    <td>-->
+<!--                        <select name="sortingKey">-->
+<!--                            <option></option>-->
+<!--                            <option value="up" --><?//= $object->sortingKey=='up' ? 'selected' : ''?>
+<!--                                вверх-->
+<!--                            </option>-->
+<!--                            <option value="down" --><?//= $object->sortingKey=='down' ? 'selected' : ''?>
+<!--                                вниз-->
+<!--                            </option>-->
+<!--                        </select>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr><td colspan="2"><hr /></td></tr>-->
 			</table>
 
 			<p class="title">Sitemap XML:</p>

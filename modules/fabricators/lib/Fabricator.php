@@ -1,5 +1,7 @@
 <?php
 namespace modules\fabricators\lib;
+use modules\catalog\catalog\lib\CatalogItemConfig;
+
 class Fabricator extends \core\modules\base\ModuleDecorator implements \interfaces\IObjectToFrontend
 {
 	function __construct($objectId)
@@ -61,9 +63,10 @@ class Fabricator extends \core\modules\base\ModuleDecorator implements \interfac
 	/* Start: URL Methods */
 	public function getPath()
 	{
-		if ($this->alias == 'index')
-			return '/';
-		return '/'.$this->alias.'/';
+//		if ($this->alias == 'index')
+//			return '/';
+//		return '/'.(new CatalogItemConfig())->getSparePartsCategoryAlias().'/'.$this->alias.'/';
+        return '/'.$this->alias.'/';
 	}
 	/*   End: URL Methods */
 
@@ -108,5 +111,23 @@ class Fabricator extends \core\modules\base\ModuleDecorator implements \interfac
     {
         $domain = $this->domain;
         return empty($domain) ? false : $domain;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    public function getMainImage($size)
+    {
+        $filePath =  'images/bg/fabricators/'.$this->getAlias().'.svg';
+        if(file_exists(DIR.$filePath))
+            return '/'.$filePath;
+        return $this->getFirstPrimaryImage()->getImage($size);
     }
 }

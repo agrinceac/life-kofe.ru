@@ -24,10 +24,10 @@ class ArticleFrontController extends \controllers\base\Controller
 
 	protected function setArticleLevel($article)
 	{
-		$category = $article->getCategory();
-		if(in_array($category->id, array(\modules\articles\lib\ArticleConfig::NEWS_CATEGORY_ID, \modules\articles\lib\ArticleConfig::INFO_CATEGORY_ID)))
-			return $this->setLevel($category->name, $category->getPath())
-				->setLevel($article->name);
+//		$category = $article->getCategory();
+//		if(in_array($category->id, array(\modules\articles\lib\ArticleConfig::NEWS_CATEGORY_ID, \modules\articles\lib\ArticleConfig::INFO_CATEGORY_ID)))
+//			return $this->setLevel($category->name, $category->getPath())
+//				->setLevel($article->name);
 
 		return $this->setLevel($article->name);
 	}
@@ -75,22 +75,4 @@ class ArticleFrontController extends \controllers\base\Controller
 			$this->articles = new \modules\articles\lib\Articles();
 		return $this->articles;
 	}
-
-	public function ajaxGetHeaderPhoneAllocaBlock()
-    {
-        ob_start();
-        $this->includeTemplate('headerPhoneAllocaBlock');
-        $contents = ob_get_contents();
-        ob_end_clean();
-        echo $contents;
-    }
-
-    public function ajaxGetFooterPhoneAllocaBlock()
-    {
-        ob_start();
-        $this->includeTemplate('footerPhoneAllocaBlock');
-        $contents = ob_get_contents();
-        ob_end_clean();
-        echo $contents;
-    }
 }

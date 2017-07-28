@@ -1,0 +1,9 @@
+@import url(../components/list-of-cards.css);
+
+#rent-of-coffee-machines {
+    padding-bottom: 0;
+}
+
+section>h3 {
+    margin-top: 0;
+}

@@ -13,7 +13,8 @@ class DeveloperShell
 		$this->setConfig();
 	}
 	
-	public function setConfig(){
+	public function setConfig()
+    {
 		$config = \core\Configurator::getInstance()->getArrayByKey('developerShell');
 		if (is_array($config))
 			$this->config = $config;
@@ -24,7 +25,8 @@ class DeveloperShell
 		$this->object = $object;
 	}
 	
-	public function show() {
+	public function show()
+    {
 		if ($this->checkShowDebugger()) {
 			$this->object->showContent('debug.tpl');
 		}
@@ -37,7 +39,8 @@ class DeveloperShell
 		$this->object->exceptionErrorHandler($e);
 	}
 	
-	private function checkShowDebugger () {
+	private function checkShowDebugger ()
+    {
 		try {
 			$this->checkDebugMode();
 			$this->checkErrorMode();
@@ -47,25 +50,31 @@ class DeveloperShell
 		}
 	}
 	
-	private function checkDebugMode () {
+	private function checkDebugMode ()
+    {
 		if ( $this->config['debugMode'] )
 			throw new \Exception('Debug mode enabled', 1);
 	}
 	
-	private function checkErrorMode () {
+	private function checkErrorMode ()
+    {
 		if ( $this->config['errorMode'] && sizeof($this->object->errorsList) > 0 )
 			throw new \Exception('Error mode enabled', 1);
 	}
 	
-	private function checkDumpMode () {
+	private function checkDumpMode ()
+    {
 		$object = $this->object;
 		if ( $this->config['dumpMode'] && sizeof($object::$varDumpData) > 0)
 			throw new \Exception('Dump mode enabled', 1);
 	}
 	
-	private function checkAccess () {
-		return (in_array($this->getSERVER()['REMOTE_ADDR'], $this->config['IP']));
+	private function checkAccess ()
+    {
+		return
+            (in_array($this->getSERVER()['REMOTE_ADDR'], $this->config['IP']))
+                ||
+            (in_array($this->getSERVER()['HTTP_X_FORWARDED_FOR'], $this->config['IP']));
 	}
-	
 }
 ?>

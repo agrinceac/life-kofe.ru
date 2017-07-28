@@ -12,14 +12,14 @@
 							<b><?=$good->getName()?></b>
 						</td>
 					</tr>
-					<tr>
-						<td style="font-size: 13px; padding: 0;">
-							Код:
-						</td>
-						<td style="font-size: 12px; padding: 0;">
-							<b><?=$good->getCode()?></b>
-						</td>
-					</tr>
+<!--					<tr>-->
+<!--						<td style="font-size: 13px; padding: 0;">-->
+<!--							Код:-->
+<!--						</td>-->
+<!--						<td style="font-size: 12px; padding: 0;">-->
+<!--							<b>--><?//=$good->getCode()?><!--</b>-->
+<!--						</td>-->
+<!--					</tr>-->
 					<tr>
 						<td colspan="2" style="padding: 0;">
 							<img src="<?=DIR_HTTP?><?=$good->getFirstPrimaryImage()->getImage('150x150')?>">

@@ -203,8 +203,8 @@ class CatalogAdminController extends \controllers\base\Controller
 		$this->setObject($this->_config->getObjectsClass());
 
 		$post = $this->getPOST();
-		$config = $this->_config;
-		$post['statusId'] = $config::BLOCKED_STATUS_ID;
+//		$config = $this->_config;
+//		$post['statusId'] = $config::BLOCKED_STATUS_ID;
 
 		$objectId = $this->modelObject->setCode($post['code'])
 									  ->setName($post['name'])
@@ -256,11 +256,11 @@ class CatalogAdminController extends \controllers\base\Controller
 		if ($object->id) {
 			$tabs = array_merge($tabs, array(
 //				'files' => 'Файлы',
-				'parameters' => 'Параметры',
-				'sizesAndWeight' => 'Свойства',
-				'subGoods'   => 'Комплектация',
+//				'parameters' => 'Параметры',
+//				'sizesAndWeight' => 'Свойства',
+//				'subGoods'   => 'Комплектация',
 				'prices'     => 'Цены',
-				'services'     => 'Услуги'
+//				'services'     => 'Услуги'
 			));
 		}
 

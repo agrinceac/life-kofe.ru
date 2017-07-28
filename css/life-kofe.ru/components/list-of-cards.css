@@ -1,0 +1,85 @@
+.card {
+    min-height: 600px;
+    padding: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    background-size: cover;
+}
+
+.card {
+    position: relative;
+}
+
+.card .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px;
+    background-color: rgba(59, 33, 20, .8);
+    border-top-width: 0;
+}
+
+.card .caption h2 {
+    line-height: 1.2;
+}
+
+.card .caption p {
+    min-height: 42px;
+    margin-bottom: 32px;
+}
+
+.card .caption,
+.card .caption h2 {
+    color: #fff;
+}
+
+@media (max-width: 1200px) {
+    .card {
+        min-height: 500px;
+    }
+
+    .card .caption h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        min-height: 400px;
+    }
+
+    .card .caption {
+        padding: 20px;
+    }
+
+    .card .caption h2 {
+        font-size: 15px;
+    }
+
+    .card .caption p {
+        min-height: 64px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        min-height: 294px;
+        margin-bottom: 24px;
+    }
+
+    .card .caption {
+        top: 0;
+    }
+
+    .card .caption h2 {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .list-of-cards>li:not(:last-child) {
+        padding-right: 0;
+    }
+}

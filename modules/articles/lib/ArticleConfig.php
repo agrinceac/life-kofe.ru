@@ -13,28 +13,9 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 	const ACTIVE_STATUS_ID = 1;
 	const BLOCKED_STATUS_ID = 2;
 
-	const TOP_MENU_CATEGORY_ID = 102;
-	const NEWS_CATEGORY_ID = 103;
-	const INFO_CATEGORY_ID = 104;
+	const TOP_MENU_CATEGORY_ID = 1;
 
-	const TOP_MENU_DANA_CATEGORY_ID = 106;
-	const REVIEWS_DANA_CATEGORY_ID = 107;
-	const NEWS_DANA_CATEGORY_ID = 103;
-	const DEFAULT_META_DANA_ARTICLE_ALIAS = 'defaultmetafordanadomain';
-	const META_DANA_CATEGORY_ID = 108;
-
-    const TOP_MENU_MERI_CATEGORY_ID = 115;
-    const REVIEWS_MERI_CATEGORY_ID = 116;
-    const DEFAULT_META_MERI_ARTICLE_ALIAS = 'defaultmetaformeridomain';
-    const META_MERI_CATEGORY_ID = 114;
-
-    const TOP_MENU_UG_CATEGORY_ID = 119;
-    const DEFAULT_META_UG_ARTICLE_ALIAS = 'defaultmetaforugdomain';
-    const META_UG_CATEGORY_ID = 114;
-    const NEWS_UG_CATEGORY_ID = 120;
-
-    const IMAGES_SMALL_MAIN_MEBEL = 757;
-    const IMAGES_BIG_MAIN_MEBEL = 758;
+    const INDEX_ALIAS = 'about';
 
 	protected $objectClass  = '\modules\articles\lib\Article';
 	protected $objectsClass = '\modules\articles\lib\Articles';
@@ -67,6 +48,7 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 		'lastUpdateTime',
 		'sitemapPriority',
 		'changeFreq',
+        'breadcrumbsShow'
 	);
 
 	public function rules()
@@ -90,7 +72,7 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 			'metaTitle, metaKeywords, metaDescription, headerText' => array(
 				'adapt' => '_adaptHtml',
 			),
-			'blank' => array(
+			'blank, breadcrumbsShow' => array(
 				'adapt' => '_adaptBool',
 			),
 			'lastUpdateTime' => array(
@@ -116,4 +98,8 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 		);
 	}
 
+	public function getActiveStatusId(){return self::ACTIVE_STATUS_ID;}
+    public function getBlockStatusId(){return self::BLOCKED_STATUS_ID;}
+    public function getTopMenuCategoryId(){return self::TOP_MENU_CATEGORY_ID;}
+	public function getIndexAlias(){return self::INDEX_ALIAS;}
 }

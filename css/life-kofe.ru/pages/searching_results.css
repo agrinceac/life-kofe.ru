@@ -1,0 +1,7 @@
+@import url(../components/filter.css);
+
+@import url(../components/search-history.css);
+
+#search-history {
+    padding: 24px 0;
+}

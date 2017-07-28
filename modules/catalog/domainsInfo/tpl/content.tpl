@@ -8,9 +8,9 @@
 									<li>
 										<a href="#main">Параметры</a>
 									</li>
-                                    <li>
-                                        <a href="#reviews">Отзывы</a>
-                                    </li>
+<!--                                    <li>-->
+<!--                                        <a href="#reviews">Отзывы</a>-->
+<!--                                    </li>-->
 								</ul>
 							</div>
                             <div id="main">
@@ -36,7 +36,9 @@
                                             <table width="100%">
                                                 <tr>
                                                     <td class="first">Имя:</td>
-                                                    <td><input type="text" name="name" value="<?=$object->name?>" /></td>
+                                                    <td>
+                                                        <input type="text" name="name" value="<?=$object->name?>" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first">Текст для шапки сайта:</td>
@@ -65,7 +67,7 @@
                                                     <td class="first">Алиас:</td>
                                                     <td><input name="alias" value="<?=$object->alias?>" /></td>
                                                 </tr>
-                                                <tr>
+                                                <tr class="hide">
                                                     <td class="first">Код:</td>
                                                     <!--<td><input name="code" value="<?//=$object->code?>" /></td>-->
                                                     <td><?=$this->getPOST()['objectId']?></td>
@@ -88,13 +90,13 @@
                                 </div><!--main_edit-->
                             </div><!--main-->
 
-                            <div id="reviews">
-
-                                <?var_dump($object->getReviews())?>
-
-                                <?$this->getController('Reviews')->getReviewsTable()?>
-                                <?$this->getController('Reviews')->addReviewBlock()?>
-                            </div>
+<!--                            <div id="reviews">-->
+<!---->
+<!--                                --><?//var_dump($object->getReviews())?>
+<!---->
+<!--                                --><?//$this->getController('Reviews')->getReviewsTable()?>
+<!--                                --><?//$this->getController('Reviews')->addReviewBlock()?>
+<!--                            </div>-->
 
                         </div>
 					</form>

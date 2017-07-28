@@ -1,0 +1,16 @@
+.list-of-payment-methods>li {
+    margin-bottom: 24px;
+}
+
+#delivery .h3 {
+    margin-top: 0;
+}
+
+#delivery .media>picture>img,
+.list-of-payment-methods>li .media>picture>img {
+    max-width: 50px;
+}
+
+.panel-primary .media {
+    margin-bottom: 0 !important;
+}

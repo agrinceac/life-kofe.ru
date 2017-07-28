@@ -186,12 +186,12 @@ class FabricatorsAdminController extends \controllers\base\Controller
 			$fabricator = $this->getObject($this->_config->getObjectClass(), $this->getREQUEST()[0]);
 
 		$tabs = array('editFabricator' => 'Параметры и фото');
-		if ($fabricator->id)
-			$tabs = array_merge($tabs, array(
-					'files' => 'Файлы',
-					'services'     => 'Услуги',
-					'parameters' => 'Параметры'
-				));
+//		if ($fabricator->id)
+//			$tabs = array_merge($tabs, array(
+//					'files' => 'Файлы',
+//					'services'     => 'Услуги',
+//					'parameters' => 'Параметры'
+//				));
 
 		$fabricators = new $this->objectsClass;
 		$this->setContent('fabricator', $fabricator)

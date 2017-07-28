@@ -5,7 +5,7 @@
 			<div class="max_width">
 				<div class="action_buts">
 					<?if( ! $this->isAuthorisatedUserAnManager()):?>
-					<a href="/admin/catalog/csvUpdate/"><img src="/admin/images/buttons/excelDoc.png" alt="" /> CSV цены</a>
+<!--					<a href="/admin/catalog/csvUpdate/"><img src="/admin/images/buttons/excelDoc.png" alt="" /> CSV цены</a>-->
 					<a href="/admin/catalog/catalogItem/"><img src="/admin/images/buttons/add.png" alt="" /> Создать</a>
 					<?endif?>
 					<a class="filters pointer"><img src="/admin/images/buttons/search.png" alt="" /> Фильтрация</a>
@@ -49,8 +49,8 @@
 								</td>
 								<td class="right">ID:</td>
 								<td><input class="filterInput" type="text" name="id" value="<?=$this->getGET()['id']?>" /></td>
-								<td class="right">Код:</td>
-								<td><input class="filterInput" type="text" name="code" value="<?=$this->getGET()['code']?>" /></td>
+<!--								<td class="right">Код:</td>-->
+<!--								<td><input class="filterInput" type="text" name="code" value="--><?//=$this->getGET()['code']?><!--" /></td>-->
 							</tr>
 							<tr>
 								<td class="right">Производители:</td>

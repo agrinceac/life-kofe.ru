@@ -3,9 +3,11 @@ namespace core;
 try {
 	define('TYPE','admin');
 
-	session_start();
+//	session_start();
 	include('includes/config.php');
 	$configurator = Configurator::getInstance();
+
+    session_start();
 
 	$urlDecodeConfig = $configurator->getArrayByKey('url');
 	url\UrlDecoder::getInstance()->setConfig($urlDecodeConfig)->requestRebuild();

@@ -8,6 +8,7 @@ $(function(){
             .sendOrderGetSuccessBlock()
             .onChangeQuantity()
             .showSubGoods()
+            .deliveryBlockToggle()
     } catch (e) {
         alert(e.message);
     }
@@ -96,7 +97,7 @@ var shopcartHandler = function () {
 
     this.onChangeQuantity = function () {
         var that = this;
-        $('body').on('click', that.sources.changeQuantity, function(){
+        $('body').on('change', that.sources.changeQuantity, function(){
             that.shopcartObject.changeQuantity($(this));
         });
         return this;
@@ -116,4 +117,12 @@ var shopcartHandler = function () {
         });
         return this;
     };
+
+    this.deliveryBlockToggle = function()
+    {
+        $('body').on('click', '[name="delivery"]', function() {
+            $('.deliveryBlock').toggleClass('hide');
+        });
+        return this;
+    }
 };

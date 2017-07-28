@@ -53,14 +53,14 @@ class Article extends \core\modules\base\ModuleDecorator implements \interfaces\
 	/* Start: URL Methods */
 	public function getPath()
 	{
-		if ($this->alias == 'index')
+		if ($this->alias == $this->getObjectConfig()->getIndexAlias())
 			return '/';
-		if ($this->categoryId == ArticleConfig::NEWS_CATEGORY_ID)
-			return '/news/'.$this->alias.'/';
-		if ($this->categoryId == ArticleConfig::INFO_CATEGORY_ID)
-			return '/info/'.$this->alias.'/';
-        if ($this->categoryId == ArticleConfig::NEWS_UG_CATEGORY_ID)
-            return '/news_ug/'.$this->alias.'/';
+//		if ($this->categoryId == ArticleConfig::NEWS_CATEGORY_ID)
+//			return '/news/'.$this->alias.'/';
+//		if ($this->categoryId == ArticleConfig::INFO_CATEGORY_ID)
+//			return '/info/'.$this->alias.'/';
+//        if ($this->categoryId == ArticleConfig::NEWS_UG_CATEGORY_ID)
+//            return '/news_ug/'.$this->alias.'/';
 		return '/'.$this->alias.'/';
 	}
 	/*   End: URL Methods */
@@ -69,8 +69,6 @@ class Article extends \core\modules\base\ModuleDecorator implements \interfaces\
 	{
 		if($this->alias == '404')
 			return true;
-        if($this->categoryId == ArticleConfig::REVIEWS_MERI_CATEGORY_ID)
-            return false;
 		return $this->getPath() == rtrim($path,'/').'/';
 	}
 

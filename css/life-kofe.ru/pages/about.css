@@ -1,0 +1,43 @@
+@import url(../components/list-of-media.css);
+@import url(../components/list-of-brands.css);
+
+#page-header {
+    background-image: url(/images/bg/pages/about/page_header.png);
+    padding-top: inherit;
+    padding-bottom: inherit;
+    color: #fff;
+}
+
+#page-header h1 {
+    margin-bottom: 0;
+    font-size: 48px;
+}
+
+#page-header p {
+    margin-bottom: 24px;
+}
+
+#page-header  .btn {
+    min-width: 180px;
+}
+
+#service-center-life-with-coffee-this .thumbnail {
+    border-bottom: #937661 6px solid;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    #instructions-schemas-videos .media p {
+        min-height: 85px;
+    }
+
+    #instructions-schemas-videos .media h5 {
+        min-height: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    #page-header .has-padding {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: life-kofe.ru
+Sitemap: http://life-kofe.ru/sitemap.xml

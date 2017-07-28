@@ -1,5 +1,7 @@
 <?php
 namespace modules\catalog\categories;
+use modules\catalog\catalog\lib\CatalogItemConfig;
+
 class CatalogCategory extends \core\modules\base\ModuleDecorator implements \interfaces\IObjectToFrontend
 {
 	use \core\traits\objects\SiteMapPriority,
@@ -138,4 +140,16 @@ class CatalogCategory extends \core\modules\base\ModuleDecorator implements \int
 
 	public function getSorting(){return $this->sorting;}
     public function getSortingKey(){return $this->sortingKey;}
+
+    public function isHidden()
+    {
+        $catalogConfig = new CatalogItemConfig();
+        if( in_array($this->id, $catalogConfig->getHiddenCategoriesId()) )
+            return true;
+        if($this->parentId != 0)
+            if( in_array($this->getParent()->id, $catalogConfig->getHiddenCategoriesId()) )
+                return true;
+
+        return false;
+    }
 }

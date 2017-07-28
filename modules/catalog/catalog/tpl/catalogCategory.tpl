@@ -30,9 +30,9 @@
 					<?if( ! $this->isAuthorisatedUserAnManager()):?>
                     <a class="pointer domainInfoLink active" data-domainalias="main" data-controller="catalog">Общая информация</a>
 					<?if ($object->id):?>
-					<?foreach ($this->getController('ModulesDomain')->getDomainsByModuleAlias('catalog') as $key => $value):?>
-                    <a class="pointer domainInfoLink" data-domainalias="<?=$value?>"><?=$value?></a>
-					<?endforeach;?>
+<!--					--><?//foreach ($this->getController('ModulesDomain')->getDomainsByModuleAlias('catalog') as $key => $value):?>
+<!--                    <a class="pointer domainInfoLink" data-domainalias="--><?//=$value?><!--">--><?//=$value?><!--</a>-->
+<!--					--><?//endforeach;?>
 					<?endif;?>
 					<?endif?>
                     <div class="clear"></div><!--end clear-->

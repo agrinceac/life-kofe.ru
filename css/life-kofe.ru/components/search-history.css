@@ -1,0 +1,21 @@
+.search-history label.h4 {
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.search-history .list-of-history-items {
+    display: inline-block;
+}
+
+.search-history .btn {
+    margin-bottom: 12px;
+    min-width: initial!important;
+}
+
+.search-history .list-of-history-items {
+    margin-bottom: 0;
+}
+
+.search-history .glyphicon-refresh {
+    margin-top: -4px;
+}
