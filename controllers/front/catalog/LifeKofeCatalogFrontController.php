@@ -134,7 +134,13 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 	{
 		$this->setLevel('Поиск');
 
-        $objects = $this->getActiveObjects();
+        $objects = $this->getActiveObjects()
+                        ->setSubquery( 'AND `categoryId` NOT IN(?s)', implode(',', $this->_config->getHiddenCategoriesId()) )
+                        ->setSubquery(
+                            'AND `categoryId` NOT IN (SELECT `id` FROM `tbl_catalog_catalog_categories` WHERE `parentId` IN (?s))',
+                            implode(',', $this->_config->getHiddenCategoriesId())
+                        );
+
         if($this->getGet()['spareName'])
             $objects->setSubquery(
                 'AND `id` IN (SELECT `id`  FROM `'.\modules\catalog\CatalogFactory::getInstance()->mainTable().'` WHERE LOWER(`name`) LIKE \'%?s%\')', strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
