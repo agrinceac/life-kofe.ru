@@ -96,7 +96,7 @@
             </table>
         </div>
         <div class="actions text-center">
-            <a class="btn btn-info" role="button" data-toggle="collapse" href="#order-form" aria-expanded="false"
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#order-form" aria-expanded="false"
                 aria-controls="order-form">Оформить заказ
             </a>
         </div>

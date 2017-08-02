@@ -15,8 +15,7 @@
                                 </div>
                                 <figcaption class="media-body">
                                     <ul class="list-unstyled">
-                                        <li><a href="">+7 (495) 507-7317</a>,</li>
-                                        <li><a href="">+7 (499) 713-7803</a></li>
+                                        <li><a>+7 (495) 507-7317</a>
                                     </ul>
                                 </figcaption>
                             </figure>

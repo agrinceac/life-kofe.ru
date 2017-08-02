@@ -5,7 +5,6 @@ $(function () {
     });
 
     getKofeMashinesList();
-    addMoreFileBlockInit();
     orderMashine();
     orderCofeMashineButtonClickInit();
     makeOrderButtonInit();
@@ -25,34 +24,6 @@ function getKofeMashinesList() {
         });
 }
 
-function addMoreFileBlockInit() {
-    $('body').on('click', '.orderMashineForm .addMoreFileBlock' ,function () {
-        var i = $('.fileformDotted').length;
-        var that = $(this);
-        var filesQuantity = 5;
-        if(i < filesQuantity){
-            var elem = $('#fileform').clone();
-            $(elem).removeAttr('id');
-            $(elem).find('.upload').attr('name','upload['+(++i)+']');
-            $(elem).find('p').text('Загрузить файл');
-            $($(that).parent('.fileform')).before(elem);
-        }
-        if(i === filesQuantity)
-            $(that).parent().remove();
-    });
-
-    $('body').on('change', '#orderMashineFiles' ,function () {
-        if (this.value.lastIndexOf('\\')){
-            var j = this.value.lastIndexOf('\\')+1;
-        }
-        else{
-            var j = this.value.lastIndexOf('/')+1;
-        }
-        var filename = this.value.slice(j);
-        var uploaded = $(this).siblings('.selectbutton').children('p').text(filename);
-    });
-}
-
 function orderMashine() {
     $('body').on('click', '.orderMashineForm .submit' ,function () {
         var myErrors  = new errors({
@@ -65,8 +36,9 @@ function orderMashine() {
             url: '/order/orderMashine/',
             type: 'POST',
             data: (function () {
-                var data = new FormData($('.orderMashineForm')[0]);
-                $('.orderMashineForm').find('*').each(function(i, el) {
+                var object = $('.orderSpare');
+                var data = new FormData(object[0]);
+                object.find('*').each(function(i, el) {
                     if(el.hasAttribute('name') && $(el).prop("type") != "button" && $(el).prop("type") != "submit"){
                         if ( ( $(el).prop("type") == "checkbox" || $(el).prop("type") == "radio" ) )
                             el.checked   ?   data[$(el).attr('name')] = 1   :   '';

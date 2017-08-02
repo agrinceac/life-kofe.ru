@@ -37,14 +37,23 @@ class OrderSpareMail extends \core\mail\MailBase
         $managers[] = $this->adminEmail;
         \core\utils\Utils::isEmail($this->bccEmail) ? $managers[] = $this->bccEmail : '';
 
-		$res = $this->From($this->noreplyEmail)
-				->To($managers)
-				->Subject('Клиент просит подобрать запчасть на сайте '.SEND_FROM)
-				->Content('data', $this->data)
-				->Content('managers', $managers)
-				->BodyFromFile('orderSpare.tpl')
-				->Send();
-		if($res)
+		$this->From($this->noreplyEmail)
+            ->To($managers)
+            ->Subject('Клиент просит подобрать запчасть на сайте '.SEND_FROM)
+            ->Content('data', $this->data)
+            ->Content('managers', $managers)
+            ->BodyFromFile('orderSpare.tpl');
+
+        if(!empty($_FILES['upload']['name'][0]))
+            foreach($_FILES['upload']['name'] as $key=>$value){
+                $this->Attach( array(
+                    'name'     => $_FILES['upload']['name'][$key],
+                    'path'     => $_FILES['upload']['tmp_name'][$key]
+//					'filetype' => $_FILES['upload']['type'][$key]
+                ) );
+            }
+
+		if($this->Send())
 			return 1;
 		throw new Exception('Error mail() in '.get_class($this).'!');
 	}

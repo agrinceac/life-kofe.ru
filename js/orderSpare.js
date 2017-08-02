@@ -13,8 +13,9 @@ $(function () {
                 url: '/order/orderSpare/',
                 type: 'POST',
                 data: (function () {
-                    var data = {};
-                    $('.orderSpare').find('*').each(function(i, el) {
+                    var object = $('.orderSpare');
+                    var data = new FormData(object[0]);
+                    object.find('*').each(function(i, el) {
                         if(el.hasAttribute('name') && $(el).prop("type") != "button" && $(el).prop("type") != "submit"){
                             if ( ( $(el).prop("type") == "checkbox" || $(el).prop("type") == "radio" ) )
                                 el.checked   ?   data[$(el).attr('name')] = 1   :   '';
@@ -24,6 +25,8 @@ $(function () {
                     });
                     return data;
                 })(),
+                processData: false,
+                contentType: false,
                 dataType: 'json',
                 beforeSend: function () {
                     myLoader.start();

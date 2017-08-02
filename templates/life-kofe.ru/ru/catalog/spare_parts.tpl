@@ -36,7 +36,7 @@
 
     <script src="/js/orderSpare.js"></script>
     <div class="col-sm-7">
-        <div class="orderSpare" role="form">
+        <form class="orderSpare" role="form">
             <h2 class="text-left">Не нашли нужную запчасть?</h2>
             <p>У нас большая база поставщиков запчастей, и в случае если нет запчастей в нашем каталоге мы сможем помочь вам найти необходимые вам запчасти.</p>
             <ul class="list-unstyled row">
@@ -65,6 +65,21 @@
                         <textareajsincluderalias name="comment" class="form-control" name="customerComment" id="customerComment" placeholder="Комментарий (не обязательно)"></textareajsincluderalias>
                     </div>
                 </li>
+                <li class="col-xs-12">
+                    <div class="form-group">
+
+                        <script src="/js/addMoreFileBlock.js"></script>
+                        <script>addMoreFileBlockInit('.orderSpare');</script>
+                        <div class="fileform fileformDotted" id="fileform">
+                            <div class="selectbutton"><p>Загрузить файл</p></div>
+                            <input class="upload" type="file" name="upload[0]" />
+                        </div>
+                        <div class="fileform fileformNotDotted">
+                            <div class="selectbutton add_more_file addMoreFileBlock"><p>+ еще файл</p></div>
+                        </div>
+
+                    </div>
+                </li>
                 <li class="col-xs-12 hide orderSpareOkMessage hide">
                     <div class="form-group">
                         Спасибо.
@@ -75,8 +90,8 @@
                     </div>
                 </li>
             </ul>
-            <button class="btn btn-info orderSpareSubmit">Отправить</button>
-        </div>
+            <button type="button" class="btn btn-info orderSpareSubmit">Отправить</button>
+        </form>
     </div>
     </div>
     </div>

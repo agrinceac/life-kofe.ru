@@ -97,13 +97,17 @@
                                     <ul>
                                 </p>
                             </div>
-                                <div class="fileform fileformDotted" id="fileform">
-                                    <div class="selectbutton"><p>Загрузить файл</p></div>
-                                    <input class="upload" type="file" name="upload[0]" id="orderMashineFiles" />
-                                </div>
-                                <div class="fileform fileformNotDotted">
-                                    <div class="selectbutton add_more_file addMoreFileBlock"><p>+ еще файл</p></div>
-                                </div>
+
+                            <script src="/js/addMoreFileBlock.js"></script>
+                            <script>addMoreFileBlockInit('.orderMashineForm');</script>
+                            <div class="fileform fileformDotted" id="fileform">
+                                <div class="selectbutton"><p>Загрузить файл</p></div>
+                                <input class="upload" type="file" name="upload[0]" />
+                            </div>
+                            <div class="fileform fileformNotDotted">
+                                <div class="selectbutton add_more_file addMoreFileBlock"><p>+ еще файл</p></div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
