@@ -36,3 +36,17 @@ header.has-padding {
 .table-bordered>tfoot>tr>td {
     border-width: 0;
 }
+
+.deliveryTypes, .paymentTypes{
+    font-size: 12px;
+    text-align: justify;
+}
+
+.paymentBlock, .deliveryInTableTr{
+    display: none;
+
+}
+
+.deliveryBlock{
+    height: auto !important;
+}

@@ -54,5 +54,7 @@ $errorsList = array(
 	'deliveryId_failed' => 'Выбран несуществующий способ доставки',
 	'deliveryId_blocked' => 'Выбран несуществующий способ доставки',
 
-	'phoneNumberOrderOneClick' => 'Пожалуйста введите свой номер телефона'
+	'phoneNumberOrderOneClick' => 'Пожалуйста введите свой номер телефона',
+
+    'upload[0]' => 'Файл не получен'
 );

@@ -26,7 +26,7 @@
                         <?endif;?>
                         <?if(isset($data['street']) && $data['street']):?>
                         <br />
-                        Город: <strong><?=$data['street']?></strong>
+                        Улица: <strong><?=$data['street']?></strong>
                         <?endif;?>
                         <?if(isset($data['home']) && $data['home']):?>
                         <br />
@@ -35,6 +35,14 @@
                         <?if(isset($data['flat']) && $data['flat']):?>
                         <br />
                         Квартира: <strong><?=$data['flat']?></strong>
+                        <?endif;?>
+                        <?if(isset($data['deliveryType']) && $data['deliveryType']):?>
+                        <br />
+                        Доставка: <strong><?=$data['deliveryType']?></strong>
+                        <?endif;?>
+                        <?if(isset($data['paymentType']) && $data['paymentType']):?>
+                        <br />
+                        Способ оплаты: <strong><?=$data['paymentType']?></strong>
                         <?endif;?>
 						<br /><br />
 						Содержание заказа:

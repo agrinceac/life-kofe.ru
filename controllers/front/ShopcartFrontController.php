@@ -39,7 +39,8 @@ class ShopcartFrontController extends \controllers\base\ShopcartBaseController
         'ajaxGetShopcartCount',
 		'ajaxGetShopcartBar',
 		'isGoodsInShopcart',
-        'ajaxGetShopcartBarContent'
+        'ajaxGetShopcartBarContent',
+        'getMoscowDeliveryCost'
 	);
 
 	public function __construct()
@@ -358,5 +359,15 @@ class ShopcartFrontController extends \controllers\base\ShopcartBaseController
         $content = ob_get_contents();
         ob_end_clean();
         echo json_encode( array('res'=>true, 'content'=>$content) );
+    }
+
+    public function getMoscowDeliveryCost()
+    {
+        $cost = $this->getShopcart()->getTotalPrice();
+        if(in_array($cost, range(1, 1000)))
+            return 400;
+        if(in_array($cost, range(1001, 4000)))
+            return 300;
+        return 0;
     }
 }

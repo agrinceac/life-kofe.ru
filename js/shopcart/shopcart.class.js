@@ -169,25 +169,13 @@ var shopcart = function (sources) {
         var that = this;
         that.loader.setLoader(object);
 
-        // var shippingId = $('[name="shipping"]:checked').attr('id');
-
-        var data = {
-            'name' : $('[name=name]').val(),
-            'family' : $('[name=family]').val(),
-            'phone' : $('[name=phone]').val(),
-            'email' : $('[name=email]').val(),
-
-            'city' : $('[name=city]:visible').val(),
-            'street' : $('[name=street]:visible').val(),
-            'home' : $('[name=home]:visible').val(),
-            'flat' : $('[name=flat]:visible').val(),
-        };
-
         $.ajax({
             url: that.ajax.sendOrder,
             type: 'POST',
-            data: data,
+            data: new FormData($('#sendOrderBlock')[0]),
             dataType: 'json',
+            processData: false,
+            contentType: false,
             success: function(data){
                 that.loader.getElement();
                 if(data == 1){

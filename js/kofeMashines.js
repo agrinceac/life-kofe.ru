@@ -35,19 +35,7 @@ function orderMashine() {
         $.ajax({
             url: '/order/orderMashine/',
             type: 'POST',
-            data: (function () {
-                var object = $('.orderSpare');
-                var data = new FormData(object[0]);
-                object.find('*').each(function(i, el) {
-                    if(el.hasAttribute('name') && $(el).prop("type") != "button" && $(el).prop("type") != "submit"){
-                        if ( ( $(el).prop("type") == "checkbox" || $(el).prop("type") == "radio" ) )
-                            el.checked   ?   data[$(el).attr('name')] = 1   :   '';
-                        else
-                            data[$(el).attr('name')] = $(el).val();
-                    }
-                });
-                return data;
-            })(),
+            data: new FormData($('.orderMashineForm')[0]),
             dataType: 'json',
             processData: false,
             contentType: false,

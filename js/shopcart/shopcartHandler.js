@@ -8,7 +8,9 @@ $(function(){
             .sendOrderGetSuccessBlock()
             .onChangeQuantity()
             .showSubGoods()
-            .deliveryBlockToggle()
+            .onDeliveryChoose()
+            .onPaymentChoose()
+            .onShowDeliveryInTableClick()
     } catch (e) {
         alert(e.message);
     }
@@ -118,11 +120,44 @@ var shopcartHandler = function () {
         return this;
     };
 
-    this.deliveryBlockToggle = function()
+    this.onDeliveryChoose = function ()
     {
-        $('body').on('click', '[name="delivery"]', function() {
-            $('.deliveryBlock').toggleClass('hide');
+        var that  = this;
+        $('body').on('change', 'input[type=radio][name=deliveryType]', function() {
+            if($('input:radio[name="deliveryType"]:checked').hasClass('toggleDeliveryBlock')){
+                $('.deliveryBlock').detach().insertAfter($(this).parent().parent());
+                $('.deliveryBlock').show();
+            }
+            else
+                $('.deliveryBlock').hide();
+            that.changeDeliveryInTable();
         });
         return this;
+    };
+
+    this.onPaymentChoose = function ()
+    {
+        $('body').on('change', 'input[type=radio][name=paymentType]', function() {
+            if($('input:radio[name="paymentType"]:checked').hasClass('togglePaymentBlock'))
+                $('.paymentBlock').slideDown();
+            else
+                $('.paymentBlock').slideUp();
+        });
+        return this;
+    };
+
+    this.onShowDeliveryInTableClick = function ()
+    {
+        var that  = this;
+        $('body').on('click', '.showDeliveryInTable', function() {
+            that.changeDeliveryInTable();
+        });
+        return this;
+    };
+
+    this.changeDeliveryInTable = function () {
+        var content = $('input:radio[name="deliveryType"]:checked').next('span').children().first('strong').html();
+        $('.deliveryInTable').html(content);
+        $('.deliveryInTableTr').slideDown();
     }
 };

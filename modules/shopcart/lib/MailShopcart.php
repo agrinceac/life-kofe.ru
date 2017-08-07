@@ -9,18 +9,19 @@ class MailShopcart extends \core\mail\MailBase
 	private $shopcart;
 
 	private $rules = array(
-			'name, family, phone' => array(
-				'validation' => array('_validNotEmpty'),
-			),
-			'email' => array(
-				'validation' => array('_validEmail', array('key'=>'email', 'notEmpty'=>true)),
-			)
+        'name, family, phone' => array(
+            'validation' => array('_validNotEmpty'),
+        ),
+        'email' => array(
+            'validation' => array('_validEmail', array('key'=>'email', 'notEmpty'=>true)),
+        )
 	);
-	private $shippingRules = array(
-			'region, city, street, home' => array(
-				'validation' => array('_validNotEmpty'),
-			)
-	);
+
+    private $deliveryRules = array(
+        'city, street, home, flat' => array(
+            'validation' => array('_validNotEmpty'),
+        )
+    );
 
 	public function rules()
 	{
@@ -37,6 +38,9 @@ class MailShopcart extends \core\mail\MailBase
 
 	public function MailShopcartToAdmin()
 	{
+        $this->createRules()
+            ->attachFiles();
+
 		if (!$this->_beforeChange($this->data, array_keys($this->data)))
 			return false;
 
@@ -49,18 +53,50 @@ class MailShopcart extends \core\mail\MailBase
 		$managers[] = $this->adminEmail;
         \core\utils\Utils::isEmail($this->bccEmail) ? $managers[] = $this->bccEmail : '';
 
-		$res = $this->From($this->noreplyEmail)
+		return $this->From($this->noreplyEmail)
 				->To($managers)
 				->Subject('Новый заказ с сайта  '.SEND_FROM)
 				->Content('data', $this->data)
 				->Content('shopcart', $this->shopcart)
 				->BodyFromFile('shopcartMailToAdmin.tpl')
-				->Send();
-//		if($res)
-//			return $this->resetMail();
-//		throw new \Exception('Error mail() in '.get_class($this).'!');
-		return $res;
+                ->Send();
 	}
+
+	private function createRules()
+    {
+        if($this->isBySelfFreeCharge())
+            $this->rules = array_merge($this->rules, $this->deliveryRules);
+        return $this;
+    }
+
+    protected function isBySelfFreeCharge()
+    {
+        return $this->data['deliveryType'] != ShopcartSources::getInstance()->getSource('delivery', 'bySelfFreeCharge');
+    }
+
+	private function attachFiles()
+    {
+        if($this->isCashless()){
+            if(!empty($_FILES['upload']['name'][0]))
+                foreach($_FILES['upload']['name'] as $key=>$value){
+                    $this->Attach( array(
+                        'name'     => $_FILES['upload']['name'][$key],
+                        'path'     => $_FILES['upload']['tmp_name'][$key]
+//					'filetype' => $_FILES['upload']['type'][$key]
+                    ) );
+                }
+            else{
+                include(DIR.'includes/errorsList.php');
+                $this->addError('upload[0]', $errorsList['upload[0]']);
+            }
+        }
+        return $this;
+    }
+
+    protected function isCashless()
+    {
+        return $this->data['paymentType'] == ShopcartSources::getInstance()->getSource('payment', 'cashless');
+    }
 
 //	public function MailShopcartToClient()
 //	{
