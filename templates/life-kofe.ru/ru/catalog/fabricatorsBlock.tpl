@@ -4,7 +4,8 @@
             <ul class="row list-unstyled list-of-brands">
                 <?foreach ($allFabricators as $allFabricator):?>
                     <li class="col-lg-2 col-md-3 col-sm-4">
-                        <a href="<?=$allFabricator->getPath()?>" class="thumbnail">
+                        <a href="<?=$allFabricator->$pathMethod()?>" class="thumbnail"
+                        >
                             <img src="<?=$allFabricator->getMainImage('141x29')?>" alt="<?=$allFabricator->getName()?>">
                         </a>
                     </li>

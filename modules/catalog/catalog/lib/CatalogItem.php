@@ -62,10 +62,12 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
 	public function getPath($domainAlias = false)
 	{
 		$currentDomainAlias = $domainAlias ? $domainAlias : $this->getCurrentDomainAlias();
-        if(in_array($currentDomainAlias, array('dana-mebel.net', 'meri-mebel.ru', 'fabrika-ugmebel.ru')))
-			return $this->getDanaSeriaPath().$this->getDomainInfoByDomainAlias($currentDomainAlias)->alias.'/';
-		return $this->getCategory()->getPath().$this->getDomainInfoByDomainAlias($currentDomainAlias)->alias.'/';
+		return '/'.$this->getObjectConfig()->getSparePartsCategoryAlias()
+            .'/'.$this->getFabricator()->alias
+            .$this->getCategory()->getTrunkedPath()
+            .$this->getDomainInfoByDomainAlias($currentDomainAlias)->alias.'/';
 	}
+
 	public function getGoodDomain()
 	{
 		return $this->getObject('\modules\catalog\domainsInfo\lib\DomainsInfo', $this)->getDomainInfoByObjectId($this->id)->domainAlias;

@@ -9,10 +9,10 @@
     <?$this->getController('Catalog')->getFilter()?>
 
     <br><br>
-    <h2>Производители</h2>
+    <h2>Искать запчасти по производителю</h2>
     <link rel="stylesheet" href="/css/life-kofe.ru/pages/repairs.css">
     <script src="/js/fabricators.js"></script>
-    <div class="placeForFabricatorsBlock"></div>
+    <div class="placeForFabricatorsBlock"><input type="hidden" value="getPath"></div>
     <br><br>
 
     <?if($subCategories->count()):?>
@@ -23,7 +23,7 @@
                 <ul class="row">
                     <?foreach ($subCategories as $subCategory):?>
                     <li class="col-md-4 col-sm-6">
-                        <a href="<?=$subCategory->getPath()?>"><?=$subCategory->getName()?></a>
+                        <a href="/search/?category=<?=$subCategory->alias?>"><?=$subCategory->getName()?></a>
                     </li>
                     <?endforeach?>
                 </ul>

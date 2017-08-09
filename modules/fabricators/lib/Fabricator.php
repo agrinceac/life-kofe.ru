@@ -60,15 +60,15 @@ class Fabricator extends \core\modules\base\ModuleDecorator implements \interfac
 		return empty($this->h1) ? $this->name : $this->h1;
 	}
 
-	/* Start: URL Methods */
 	public function getPath()
 	{
-//		if ($this->alias == 'index')
-//			return '/';
-//		return '/'.(new CatalogItemConfig())->getSparePartsCategoryAlias().'/'.$this->alias.'/';
-        return '/'.$this->alias.'/';
+        return '/'.(new CatalogItemConfig())->getSparePartsCategoryAlias().'/'.$this->alias.'/';
 	}
-	/*   End: URL Methods */
+
+	public function getNativePath()
+    {
+        return '/'.$this->alias.'/';
+    }
 
 	public function isValidPath($path)
 	{

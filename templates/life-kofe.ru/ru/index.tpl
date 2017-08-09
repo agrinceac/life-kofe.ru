@@ -154,7 +154,7 @@
                 <div class="container text-center">
                     <h2>Обслуживание кофемашин</h2>
                     <script src="/js/fabricators.js"></script>
-                    <div class="placeForFabricatorsBlock"></div>
+                    <div class="placeForFabricatorsBlock"><input type="hidden" value="getNativePath"></div>
                 </div>
             </section>
         </article>

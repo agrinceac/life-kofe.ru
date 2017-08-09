@@ -1,5 +1,6 @@
 <?php
 namespace controllers\front\catalog;
+use core\ArrayWrapper;
 use core\modules\categories\Categories;
 use modules\catalog\categories\CatalogCategories;
 use modules\catalog\categories\CatalogCategoryConfig;
@@ -66,7 +67,7 @@ class CatalogFrontController extends \controllers\base\Controller
 
 	protected function checkObjectPath($object)
 	{
-		return rtrim($object->getPath(), '/') == rtrim(str_replace('?'.$this->getSERVER()['REDIRECT_QUERY_STRING'], '', $this->getSERVER()['REQUEST_URI']), '/');
+        return rtrim($object->getPath(), '/') == rtrim(str_replace('?'.$this->getSERVER()['REDIRECT_QUERY_STRING'], '', $this->getSERVER()['REQUEST_URI']), '/');
 	}
 
 	protected function getCatalogObject()
@@ -177,20 +178,20 @@ class CatalogFrontController extends \controllers\base\Controller
     protected function getCategoriesByFabricatorId($fabricatorId)
     {
         $catalog = $this->getCatalogObject();
-        $categoriesId = \core\db\Db::getMysql()->rows('SELECT DISTINCT `categoryId` FROM `'.$catalog->mainTable().'` '
+        $res = \core\db\Db::getMysql()->rowAssoc('SELECT DISTINCT `categoryId` FROM `'.$catalog->mainTable().'` '
             . 'WHERE `fabricatorId` ='.$fabricatorId.' '
             . '	AND `statusId` NOT IN ('.implode(',', $this->getExludedStatusesArray()).')');
 
-        if(empty($categoriesId))
+        if(empty($res))
             return false;
 
-        $array = array();
-        foreach ($categoriesId as $key=>$value){
-            $category = $this->getObject('\modules\catalog\categories\CatalogCategory', $value['categoryId'], $this->_config);
-            $array[$category->getName()] = $category;
-        }
-        ksort($array);
-        return $array;
+        $categoriesId = '';
+        foreach($res as $item)
+            $categoriesId .= $item.',';
+        $categoriesId = rtrim($categoriesId, ',');
+
+        return (new CatalogCategories($this->_config))->filterByIds($categoriesId)
+                                                        ->filerByNoIds($this->_config->getHiddenCategoriesIdString());
     }
 
     protected function getActiveCategories()

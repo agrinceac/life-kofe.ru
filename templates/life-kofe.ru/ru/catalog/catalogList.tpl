@@ -3,11 +3,9 @@
 
     <link rel="stylesheet" href="/css/<?=$this->getCurrentDomainAlias()?>/pages/products_category.css">
 
-    <?if(isset($category) && $category):?>
     <header id="page-header">
-        <h1 class="container"><?=$category->getName()?></h1>
+        <h1 class="container"><?=$h1?></h1>
     </header>
-    <?endif?>
 
     <?$this->getController('Catalog')->getFilter()?>
 
@@ -17,10 +15,10 @@
     <h1>Результаты поиска</h1>
     <?endif?>
 
-    <?if(isset($subCategories) && $subCategories && $subCategories->count()):?>
+    <?if(isset($categories) && $categories && $categories->count()):?>
     <section class="container">
         <ul class="list-of-products list-unstyled">
-            <?foreach($subCategories as $subCategory):?>
+            <?foreach($categories as $category):?>
             <li class="col-lg-3 col-md-4 col-sm-6">
                 <figure class="thumbnail product">
                     <picture
@@ -28,9 +26,9 @@
                         style="background-image: url(<?//=$subCategory->current()->getFirstPrimaryImage()->getImage('236x150')?>);"
                     ></picture>
                     <figcaption class="caption">
-                        <h5 class="product--name"><?=$subCategory->getName()?></h5>
+                        <h5 class="product--name"><?=$category->getName()?></h5>
                         <div class="text-center">
-                            <a href="<?=$subCategory->getPath()?>" class="btn btn-link">Подробнее</a>
+                            <a href="<?=$category->getPath()?>" class="btn btn-link">Подробнее</a>
                         </div>
                     </figcaption>
                 </figure>
@@ -44,7 +42,7 @@
 
     <?endif?>
 
-    <?if($objects->count()):?>
+    <?if(isset($objects)  &&  $objects  &&  $objects->count()):?>
     <section class="container">
         <ul class="row list-unstyled list-of-products">
             <?foreach($objects as $object):?>

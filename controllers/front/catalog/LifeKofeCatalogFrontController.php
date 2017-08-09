@@ -27,6 +27,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 	protected function pageDetect()
 	{
 		$alias = $this->getLastElementFromRequest();
+
 		$good = $this->getGoodByAlias($alias);
 		if ($good && !$good->isHidden()){
 			if ($this->checkObjectPath($good)){
@@ -37,24 +38,28 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 		}
 
 		$category = $this->getCatalogObject()->getCategories()->getObjectByAlias($alias);
-
 		if ($category)
 		    if(!$category->isHidden())
                 if ($this->checkObjectPath($category))
-                    return $this->viewCategory($alias);
+                    return $this->viewCategory($category);
+
+        $fabricator = (new Fabricators())->getObjectByAlias($alias);
+        if ($fabricator)
+            if ($this->checkObjectPath($fabricator))
+                return $this->viewFabricator($fabricator);
 
 		$this->sendRequestToArticlesController();
 	}
 
-	protected function viewCategory($alias)
+	private function viewCategory($category)
 	{
 //        $cacheKey = md5($this->getCurrentDomainAlias().'-'.__METHOD__.serialize($this->getREQUEST()->getArray()));
 //		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
 //		if ($contents === false){
 //			ob_start();
-
-			$category = $this->getCatalogObject()->getCategories()->getObjectByAlias($alias);
-			$this->setLevel($category->getParent()->name, $category->getParent()->getPath())
+            $fabricator = (new Fabricators())->getObjectByAlias($this->getUriElement(2));
+			$this->setSparePartsLevel()
+                ->setLevel($this->getFabricatorPreString().$fabricator->getName(), $fabricator->getPath())
 				 ->setLevel($category->getName());
 
             $objects = $this->getObjectsByCategory($category)
@@ -63,8 +68,8 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
                             ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
 			$this->setMetaFromObject($category)
-                ->setContent('category', $category)
-                ->setContent('subCategories', $category->getChildren([self::ACTIVE_CATEGORY_STATUS]))
+                ->setContent('h1', $category->getH1())
+                ->setContent('categories', $category->getChildren([self::ACTIVE_CATEGORY_STATUS]))
                 ->setContent('objects', $objects)
                 ->setContent('itemsInSelect', $this->getItemsInSelect())
                 ->setContent('pager', $objects->getPager())
@@ -76,6 +81,24 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		}
 //		echo $contents;
 	}
+
+	private function viewFabricator($fabricator)
+    {
+        $this->setSparePartsLevel()
+            ->setLevel($this->getFabricatorPreString().$fabricator->getName())
+            ->setMetaFromObject($fabricator)
+            ->setContent('h1', $this->getFabricatorPreString().$fabricator->getH1())
+            ->setContent('categories', $this->getCategoriesByFabricatorId($fabricator->id))
+            ->includeTemplate('catalog/catalogList');
+    }
+
+    private function setSparePartsLevel()
+    {
+        return $this->setLevel(
+            $this->_config->getSparePartsCategory()->name,
+            $this->_config->getSparePartsCategory()->getNativePath()
+        );
+    }
 
 	protected function getItemsInSelect()
     {
@@ -115,9 +138,12 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
 //		if ($contents === false){
 //			ob_start();
+            $this->setSparePartsLevel()
+                ->setLevel($this->getFabricatorPreString().$good->getFabricator()->getName(), $good->getFabricator()->getPath())
+                ->setLevel($good->getCategory()->name, $good->getCategory()->getPath())
+                ->setLevel($good->getName());
 
-			$this->setLevels($good)
-				->setMetaFromObject($good)
+			$this->setMetaFromObject($good)
 				->setContent('object', $good)
                 ->setContent('itemsInSelect', $this->getItemsInSelect())
                 ->setContent('breadcrumbsShow', true)
@@ -129,6 +155,11 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		}
 //		echo $contents;
 	}
+
+	private function getFabricatorPreString()
+    {
+        return 'Запчасти для кофемашин ';
+    }
 
 	protected function search()
 	{
@@ -157,9 +188,8 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
                 ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
                 ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
-        $this
-//            ->setMetaFromObject($category)
-            ->setContent('isSearch', true)
+        $this->setContent('isSearch', true)
+            ->setContent('h1', 'Результаты поиска')
             ->setContent('objects', $objects)
             ->setContent('itemsInSelect', $this->getItemsInSelect())
             ->setContent('pager', $objects->getPager())
@@ -206,7 +236,8 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
     protected function ajaxGetFabricatorsBlock()
     {
         ob_start();
-        $this->setContent('allFabricators', $this->getFabricators())
+        $this->setContent('pathMethod', ($this->getPost()['pathMethod']))
+            ->setContent('allFabricators', $this->getFabricators())
             ->includeTemplate('catalog/fabricatorsBlock');
         $contents = ob_get_contents();
         ob_end_clean();

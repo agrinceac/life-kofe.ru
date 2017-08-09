@@ -1,11 +1,14 @@
 <?php
 namespace modules\catalog\categories;
+use modules\catalog\catalog\lib\Catalog;
 use modules\catalog\catalog\lib\CatalogItemConfig;
+use modules\fabricators\lib\Fabricators;
 
 class CatalogCategory extends \core\modules\base\ModuleDecorator implements \interfaces\IObjectToFrontend
 {
 	use \core\traits\objects\SiteMapPriority,
-		\core\traits\RequestHandler;
+		\core\traits\RequestHandler,
+        \core\traits\UriHandler;
 
 	function __construct($objectId, $configObject)
 	{
@@ -63,19 +66,51 @@ class CatalogCategory extends \core\modules\base\ModuleDecorator implements \int
 	}
 	/*   End: Main Data Methods */
 
-	/* Start: URL Methods */
 	public function getPath()
 	{
-		$categoryRules = new \core\modules\categories\CategoriesAliasesRules;
-		$res = $categoryRules->useRules($this->getParentObject()->getPath());
-
-		$domainInfo = $this->getDomainInfo($this);
-		if(!$this->isNoop($domainInfo))
-			$res = str_replace('/'.$this->alias.'/', '/'.$domainInfo->alias.'/', $res);
-
-		return $this->changePathByParentsAndDomain($res, $this);
+        return $this->getPathByUrl();
 	}
-	/*   End: URL Methods */
+
+	public function getNativePath()
+    {
+        $categoryRules = new \core\modules\categories\CategoriesAliasesRules;
+        $res = $categoryRules->useRules($this->getParentObject()->getPath());
+
+        $domainInfo = $this->getDomainInfo($this);
+        if(!$this->isNoop($domainInfo))
+            $res = str_replace('/'.$this->alias.'/', '/'.$domainInfo->alias.'/', $res);
+
+        return $this->changePathByParentsAndDomain($res, $this);
+    }
+
+	public function getTrunkedPath()
+    {
+        return str_replace('/'.(new CatalogItemConfig())->getSparePartsCategoryAlias(), '', $this->getNativePath());
+    }
+
+    private function getPathByUrl()
+    {
+        $fabricatorAlias = $this->getUriElement(2);
+        $fabricator = ((new Fabricators())->getObjectByAlias($fabricatorAlias));
+        if(!$fabricator)
+            return false;
+        $objects = (new Catalog())->filterByCategory($this)
+                                    ->filterByFabricator($fabricator)
+                                    ->filterByStatusesString( ((new CatalogItemConfig())->getActiveStatusesString()) );
+
+        if(!$objects->count())
+            return false;
+
+        $path = '/';
+        foreach ( explode('/', $this->getNativePath()) as $key=>$value){
+            if(!empty($value))
+                $path .= $value.'/';
+            if($key == 1){
+                $path .= $fabricatorAlias.'/';
+            }
+        }
+        return $path;
+    }
 
 	private function getDomainInfo($object)
 	{

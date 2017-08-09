@@ -19,4 +19,26 @@ class CatalogCategories extends \core\modules\base\ModuleDecorator
 			return $this->getObjectById($domainInfo->getField('objectId', $domainInfo->id));
 		return $this->getParentObject()->getObjectByAlias($alias);
 	}
+
+	public function filterByIds($idsString)
+    {
+        $this->setSubquery('AND `id` IN (?s)', $idsString);
+        return $this;
+    }
+
+    public function filerByNoIds($idsString)
+    {
+        $this->setSubquery('AND `id` NOT IN (?s)', $idsString);
+        return $this;
+    }
+
+    public function getSortedCategoriesArray($idsString)
+    {
+        $array = array();
+        foreach ($this->filterByIds($idsString) as $key=>$value){
+            $array[$value->getName()] = $value;
+        }
+        ksort($array);
+        return $array;
+    }
 }

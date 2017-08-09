@@ -48,4 +48,22 @@ class Catalog extends \core\modules\base\ModuleDecorator implements \Countable
 				->setSubquery('AND `id` IN (?s)', implode(',', $fabricatorsIdArray));
 
 	}
+
+	public function filterByCategory($category)
+    {
+        $this->setSubquery('AND `categoryId` = ?d', $category->id);
+        return $this;
+    }
+
+    public function filterByFabricator($fabricator)
+    {
+        $this->setSubquery('AND `fabricatorId` = ?d', $fabricator->id);
+        return $this;
+    }
+
+    public function filterByStatusesString($statusesString)
+    {
+        $this->setSubquery('AND `statusId` IN (?s)', $statusesString);
+        return $this;
+    }
 }

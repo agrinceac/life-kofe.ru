@@ -118,4 +118,14 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
     {
         return [self::KOFE_CATEGORY_ID, self::KOFE_MASHINES_CATEGORY_ID];
     }
+
+    public function getHiddenCategoriesIdString()
+    {
+        return implode(',', $this->getHiddenCategoriesId());
+    }
+
+    public function getActiveStatusesString()
+    {
+        return (string)(self::ACTIVE_STATUS_ID);
+    }
 }
