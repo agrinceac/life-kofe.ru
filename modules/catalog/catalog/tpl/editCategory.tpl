@@ -61,10 +61,10 @@
 					<td class="first">Meta Description:</td>
 					<td><input name="metaDescription" value="<?=$object->metaDescription?>" type="text"/></td>
 				</tr>
-				<tr>
-					<td class="first">Текст для шапки сайта:</td>
-					<td><input name="headerText" value="<?=$object->headerText?>" type="text"/></td>
-				</tr>
+<!--				<tr>-->
+<!--					<td class="first">Текст для шапки сайта:</td>-->
+<!--					<td><input name="headerText" value="--><?//=$object->headerText?><!--" type="text"/></td>-->
+<!--				</tr>-->
 			</table>
 		</div>
 	</div><!--main_param-->

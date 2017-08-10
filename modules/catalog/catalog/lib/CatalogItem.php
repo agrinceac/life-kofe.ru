@@ -300,14 +300,8 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
 
     public function isHidden()
     {
-//        if( in_array($this->categoryId, $this->getConfig()->getHiddenCategoriesId()) )
-//            return true;
-//
-//        if($this->getCategory()->parentId != 0)
-//            if( in_array($this->getCategory()->getParent(), $this->getConfig()->getHiddenCategoriesId()) )
-//                return true;
-//
-//        return false;
         return $this->getCategory()->isHidden();
     }
+
+    public function getArticul(){return $this->articul;}
 }

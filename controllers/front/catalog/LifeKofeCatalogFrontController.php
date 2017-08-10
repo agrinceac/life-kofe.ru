@@ -174,7 +174,12 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
         if($this->getGet()['spareName'])
             $objects->setSubquery(
-                'AND `id` IN (SELECT `id`  FROM `'.\modules\catalog\CatalogFactory::getInstance()->mainTable().'` WHERE LOWER(`name`) LIKE \'%?s%\')', strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
+                'AND `id` IN (
+                    SELECT `id`  FROM `'.\modules\catalog\CatalogFactory::getInstance()->mainTable().
+                    '` WHERE (LOWER(`name`) LIKE \'%?s%\' OR LOWER(`articul`) LIKE \'%?s%\') 
+                )'
+                , strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
+                , strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
             );
         if($this->getGet()['category'])
             $objects->setFiltersByCategoryAlias(\core\utils\DataAdapt::textValid($this->getGet()['category']));

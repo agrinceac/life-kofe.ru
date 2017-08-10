@@ -71,6 +71,12 @@
 						</select>
 					</td>
 				</tr>
+                <tr>
+                    <td class="first">Артикул:</td>
+                    <td>
+                        <input name="articul" value="<?=$object->getArticul()?>">
+                    </td>
+                </tr>
 <!--				<tr>-->
 <!--					<td class="first">Серия:</td>-->
 <!--					<td>-->

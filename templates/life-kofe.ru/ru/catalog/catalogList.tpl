@@ -60,7 +60,12 @@
                     </a>
                     <figcaption class="caption">
                         <a href="<?=$object->getPath()?>">
-                            <h5 class="product--name"><?=$object->getInfo()->getName()?></h5>
+                            <h5 class="product--name">
+                                <?=$object->getInfo()->getName()?>
+                                <?if($object->getArticul()):?>
+                               (<?=$object->getArticul()?>)
+                                <?endif;?>
+                            </h5>
                         </a>
                         <form action="" method="POST" role="form">
                             <div class="row">

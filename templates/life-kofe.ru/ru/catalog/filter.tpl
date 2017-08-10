@@ -50,7 +50,7 @@
                     <script src="/js/searchBySpareName.js"></script>
                     <div role="form" class="row">
                         <input type="text" id="spareName" class="form-control filter-search"
-                               placeholder="Поиск запчасти по названию"
+                               placeholder="Введите артикули или название"
                                value="<?= $this->getGet()['spareName'] ? $this->getGet()['spareName'] : ''?>"
                         >
                         <span id="searchBySpareNameSubmit" class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>

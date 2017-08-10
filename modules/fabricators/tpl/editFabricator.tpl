@@ -45,10 +45,10 @@
 					<td class="first">Meta Keywords:</td>
 					<td><input type="text" name="metaKeywords" value="<?=$fabricator->metaKeywords?>" /></td>
 				</tr>
-				<tr>
-					<td class="first">Текст для шапки сайта:</td>
-					<td><input type="text" name="headerText" value="<?=$fabricator->headerText?>" /></td>
-				</tr>
+<!--				<tr>-->
+<!--					<td class="first">Текст для шапки сайта:</td>-->
+<!--					<td><input type="text" name="headerText" value="--><?//=$fabricator->headerText?><!--" /></td>-->
+<!--				</tr>-->
 				<tr>
 					<td class="first">Описание:</td>
 					<td><textarea name="description" cols="95" rows="10"><?=$fabricator->description?></textarea>

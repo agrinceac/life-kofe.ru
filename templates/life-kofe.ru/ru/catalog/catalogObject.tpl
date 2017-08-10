@@ -46,11 +46,12 @@
                                         <td width="170"><h5 class="media-heading">Производитель:</h5></td>
                                         <td><?=$object->getFabricator()->getName()?></td>
                                     </tr>
-<!--                                <tr>-->
-<!--                                    <td>-->
-<!--                                        <h5 class="media-heading">Артикул:</h5></td>-->
-<!--                                    <td>sm72877</td>-->
-<!--                                </tr>-->
+                                    <?if($object->getArticul()):?>
+                                    <tr>
+                                        <td><h5 class="media-heading">Артикул:</h5></td>
+                                        <td><?=$object->getArticul()?></td>
+                                    </tr>
+                                    <?endif;?>
                                 </tbody>
                             </table>
                             <p>&nbsp;</p>
