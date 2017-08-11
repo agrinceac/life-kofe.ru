@@ -101,7 +101,7 @@
 <!--					<td class="first">Шаблон:</td>-->
 <!--					<td>--><?//=$object->template; ?><!--</td>-->
 <!--				</tr>-->
-				<tr class="hide">
+				<tr>
 					<td class="first">Домен:</td>
 					<td>
 						<select name="domainAlias" style="width:150px;">
