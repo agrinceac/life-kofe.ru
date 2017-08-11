@@ -16,7 +16,9 @@
 		<div class="root">
 			<div class="head_line">
 				<div class="max_width">
-					<p class="logo"><a href="/admin/"><img src="/admin/images/logo/logo.png" alt=""></a></p>
+					<p class="logo"><a href="/admin/">
+<!--                            <img src="/admin/images/logo/logo.png" alt="">-->
+                        </a></p>
 					<div class="title"><?=$title?></div>
 					<div class="clear"></div>
 				</div>

@@ -43,7 +43,10 @@
 			</div><!--top_line-->
 			<div class="head_line">
 				<div class="max_width">
-					<p class="logo"><a href="/admin/"><img src="/admin/images/logo/logo.png" alt="" /></a></p>
+					<p class="logo"><a href="/admin/">
+<!--                            <img src="/admin/images/logo/logo.png" alt="" />-->
+                        </a>
+                    </p>
 					<?$this->getController('Notifier')->getTopNotices()?>
 					<div class="clear"></div>
 				</div>

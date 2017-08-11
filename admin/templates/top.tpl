@@ -43,7 +43,9 @@
 			</div><!--top_line-->
 			<div class="head_line">
 				<div class="max_width">
-					<p class="logo"><a href="/admin/"><img src="/admin/images/logo/logo.png" alt="" height="35" style="padding-top: 3px;" /></a></p>
+					<p class="logo"><a href="/admin/">
+<!--                            <img src="/admin/images/logo/logo.png" alt="" height="35" style="padding-top: 3px;" />-->
+                        </a></p>
 					<div class="user">
 						<div class="avauser"><a href="/admin/profile/"></a></div>
 						<p class="user_name"><a href="/admin/profile/"><?=$this->getAuthorizatedUser()->getLogin();?></a></p>
