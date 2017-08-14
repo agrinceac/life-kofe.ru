@@ -1,5 +1,6 @@
 <?php
 namespace controllers\front\catalog;
+use modules\articles\lib\Articles;
 use modules\catalog\categories\CatalogCategoryConfig;
 use modules\fabricators\lib\Fabricators;
 
@@ -121,10 +122,12 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
             if($this->getLastElementFromRequest() != $this->_config->getSparePartsCategory())
                 return $this->pageDetect();
 
-        $this->setContent('category', $this->_config->getSparePartsCategory())
+        $category = $this->_config->getSparePartsCategory();
+        $this->setMetaFromObject($category)
+            ->setContent('category', $category)
             ->setContent('subCategories', $this->getActiveCategories()
                                                 ->setSubquery(' AND `parentId` != ?d', 0))
-            ->includeTemplate('catalog/'.$this->_config->getSparePartsCategoryAlias());
+            ->includeTemplate('catalog/'.$category->alias);
     }
 
 	protected function getMainCategories()
