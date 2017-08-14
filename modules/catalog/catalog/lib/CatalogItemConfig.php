@@ -58,7 +58,7 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 	public function rules()
 	{
 		return array(
-			'name, articul' => array(
+			'name' => array(
 				'validation' => array('_validNotEmpty'),
 				'adapt' => '_adaptHtml',
 			),
