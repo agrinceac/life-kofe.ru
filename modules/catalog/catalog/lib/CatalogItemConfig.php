@@ -62,11 +62,11 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 				'validation' => array('_validNotEmpty'),
 				'adapt' => '_adaptHtml',
 			),
-            'articul' => array(
-//                'validation' => array('_validNotEmpty'),
-                'validation' => array('_isUnique', array('notEmpty' => false, 'field' => 'articul')),
-                'adapt' => '_adaptHtml',
-            ),
+//            'articul' => array(
+////                'validation' => array('_validNotEmpty'),
+//                'validation' => array('_isUnique', array('notEmpty' => false, 'field' => 'articul')),
+//                'adapt' => '_adaptHtml',
+//            ),
 			'alias' => array(
 				'adapt' => '_adaptAlias',
 			),
