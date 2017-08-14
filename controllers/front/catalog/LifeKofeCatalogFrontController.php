@@ -165,12 +165,12 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 	{
 		$this->setLevel('Поиск');
 
-        $objects = $this->getActiveObjects()
-                        ->setSubquery( 'AND `categoryId` NOT IN(?s)', implode(',', $this->_config->getHiddenCategoriesId()) )
-                        ->setSubquery(
-                            'AND `categoryId` NOT IN (SELECT `id` FROM `tbl_catalog_catalog_categories` WHERE `parentId` IN (?s))',
-                            implode(',', $this->_config->getHiddenCategoriesId())
-                        );
+        $objects = $this->getActiveObjects();
+        $objects->setSubquery( 'AND `categoryId` NOT IN(?s)', implode(',', $this->_config->getHiddenCategoriesId()) )
+                ->setSubquery(
+                    'AND `categoryId` NOT IN (SELECT `id` FROM `tbl_catalog_catalog_categories` WHERE `parentId` IN (?s))',
+                    implode(',', $this->_config->getHiddenCategoriesId())
+                );
 
         if($this->getGet()['spareName'])
             $objects->setSubquery(
@@ -181,8 +181,10 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
                 , strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
                 , strtolower(\core\utils\DataAdapt::textValid($this->getGet()['spareName']))
             );
+
         if($this->getGet()['category'])
             $objects->setFiltersByCategoryAlias(\core\utils\DataAdapt::textValid($this->getGet()['category']));
+
         if($this->getGet()['fabricator'])
             $objects->setSubquery(
                 'AND `fabricatorId` = ?d',

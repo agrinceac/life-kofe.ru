@@ -47,13 +47,14 @@
         <ul class="row list-unstyled list-of-products">
             <?foreach($objects as $object):?>
 
-            <?if($this->getController('Authorization')->isAdminAuthorizated()):?>
-            <a class="adminShow" href="<?=$object->getAdminPath()?>" target="_blank" title="Эта ссылка видна только авторизованному в админской части пользователю">
-                Редактировать [id = <?=$object->id?>]
-            </a>
-            <?endif?>
-
             <li class="col-lg-3 col-md-4 col-sm-6">
+
+                <?if($this->getController('Authorization')->isAdminAuthorizated()):?>
+                    <a class="adminShow" href="<?=$object->getAdminPath()?>" target="_blank" title="Эта ссылка видна только авторизованному в админской части пользователю">
+                        Редактировать [id = <?=$object->id?>]
+                    </a>
+                <?endif?>
+
                 <figure class="thumbnail product">
                     <a href="<?=$object->getPath()?>">
                         <picture class="product--image" style="background-image: url(<?=$object->getFirstPrimaryImage()->getImage('236x150')?>);"></picture>
