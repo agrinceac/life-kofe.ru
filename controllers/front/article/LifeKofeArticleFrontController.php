@@ -81,7 +81,8 @@ class LifeKofeArticleFrontController extends \controllers\front\article\ArticleF
 //        if ($contents === false){
             $fabricators = new \modules\fabricators\lib\Fabricators();
             $fabricator = $fabricators->getObjectByAlias($alias);
-            if ($fabricator->isValidPath($this->getSERVER()['REQUEST_URI'])){
+//            if ($fabricator->isValidPath($this->getSERVER()['REQUEST_URI'])){
+            if( '/'.$fabricator->alias.'/' == $_SERVER['REQUEST_URI'] ){
 //                ob_start();
 //                $sparePartsCategory = (new CatalogItemConfig())->getSparePartsCategory();
                 $this
