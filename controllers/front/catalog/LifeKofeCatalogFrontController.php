@@ -16,6 +16,8 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         'getFilter',
         'getFabricators',
         'spare_parts',
+        'kofe',
+        'rashodnye_materialy',
         'getMainCategories',
         'getItemsInSelect',
         'ajaxGetKofeMashinesListBlock',
@@ -211,6 +213,44 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
             ->setContent('pager', $objects->getPager())
             ->includeTemplate('catalog/catalogList');
 	}
+
+	protected function kofe()
+    {
+        $config = $this->_config;
+        $category = $this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_CATEGORY_ID);
+        $this->setLevel($category->getName(), $category->getNativePath());
+
+        $objects = $this->getObjectsByCategory($category)
+            ->setOrderBy('priority ASC')
+            ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
+            ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
+
+        $this->setMetaFromObject($category)
+            ->setContent('h1', $category->getH1())
+            ->setContent('objects', $objects)
+            ->setContent('itemsInSelect', $this->getItemsInSelect())
+            ->setContent('pager', $objects->getPager())
+            ->includeTemplate('catalog/catalogList');
+    }
+
+    protected function rashodnye_materialy()
+    {
+        $config = $this->_config;
+        $category = $this->getCatalogObject()->getCategories()->getObjectById($config::CONSUMABLES_CATEGORY_ID);
+        $this->setLevel($category->getName(), $category->getNativePath());
+
+        $objects = $this->getObjectsByCategory($category)
+            ->setOrderBy('priority ASC')
+            ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
+            ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
+
+        $this->setMetaFromObject($category)
+            ->setContent('h1', $category->getH1())
+            ->setContent('objects', $objects)
+            ->setContent('itemsInSelect', $this->getItemsInSelect())
+            ->setContent('pager', $objects->getPager())
+            ->includeTemplate('catalog/catalogList');
+    }
 
 	protected function ajaxGetKofeMashinesListBlock()
     {

@@ -68,6 +68,8 @@
                             <li><a href="/useful">Полезные статьи</a></li>
                             <li><a href="/docs">Инструкции</a></li>
                             <li><a href="/schemes">Схемы кофемашин</a></li>
+                            <li><a href="/kofe">Кофе</a></li>
+                            <li><a href="/rashodnye_materialy">Расходные материалы</a></li>
                         </ul>
                     </nav>
                     <?endif?>
