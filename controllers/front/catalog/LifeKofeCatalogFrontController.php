@@ -1,6 +1,7 @@
 <?php
 namespace controllers\front\catalog;
 use modules\articles\lib\Articles;
+use modules\articles\lib\ArticlesObject;
 use modules\catalog\categories\CatalogCategoryConfig;
 use modules\fabricators\lib\Fabricators;
 
@@ -68,7 +69,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
                             ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
                             ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
-			$this->setMetaFromObject($category)
+			$this->setSpecialMeta($category, $this->getElementFromTheEndOfRequest(2))
                 ->setContent('h1', $category->getH1())
                 ->setContent('categories', $category->getChildren([self::ACTIVE_CATEGORY_STATUS]))
                 ->setContent('objects', $objects)
@@ -85,10 +86,15 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
 	private function viewFabricator($fabricator)
     {
+        $articles = new \modules\articles\lib\Articles();
+        $articleForMeta = $articles->getObjectByAlias($this->_config->getSparePartsCategory()->alias.'_'.$fabricator->getAlias());
+
+        if ($articleForMeta)
+            $this->setMetaFromObject($articleForMeta);
+
         $this->setSparePartsLevel()
             ->setLevel($this->getFabricatorPreString().$fabricator->getName())
-            ->setMetaFromObject($fabricator)
-            ->setContent('h1', $this->getFabricatorPreString().$fabricator->getH1())
+            ->setContent('h1', $articleForMeta->h1)
             ->setContent('categories', $this->getCategoriesByFabricatorId($fabricator->id))
             ->includeTemplate('catalog/catalogList');
     }
@@ -208,12 +214,28 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
 	protected function ajaxGetKofeMashinesListBlock()
     {
+        if (isset($this->getPOST()['page']) && !empty($this->getPOST()['page']))
+            $forPage = $this->getPOST()['page'];
+        else
+            $forPage = 'rent_for_office';
+
         ob_start();
-        $this->setContent('objects', $this->getCofeMashines())
+        $this->setContent('objects', $this->getCoffeeMashinesForRentPage($forPage))
+            ->setContent('page', $forPage)
             ->includeTemplate('catalog/kofeMashinesList');
         $contents = ob_get_contents();
         ob_end_clean();
         $this->ajaxResponse($contents);
+    }
+
+    private function getCoffeeMashinesForRentPage($page)
+    {
+        $article = (new ArticlesObject())->getObjectByAlias($page);
+        $config = $this->_config;
+        return $this->getObjectsByCategory($this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_MASHINES_CATEGORY_ID))
+            ->setSubquery(' AND `id` IN (SELECT `catalogItemId` FROM `' .$this->getObject('\modules\catalog\rentCoffeeMachines\lib\RentCoffeeMachineConfig')->mainTable().'`
+            WHERE `rentPageId` =  ?d)', $article->id)
+            ->setOrderBy('priority ASC');
     }
 
     private function getCofeMashines()
@@ -252,5 +274,15 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         $contents = ob_get_contents();
         ob_end_clean();
         $this->ajaxResponse($contents);
+    }
+
+    private function setSpecialMeta($object, $suffix)
+    {
+        if ($object instanceof \interfaces\IObjectToFrontend) {
+            return $this->setTitle($object->getMetaTitle() . ' - ' . ucfirst($suffix))
+                ->setDescription($object->getMetaDescription() . ' - ' . ucfirst($suffix))
+                ->setKeywords($object->getMetaKeywords() . ',' . $suffix)
+                ->setHeaderText($object->getHeaderText());
+        }
     }
 }

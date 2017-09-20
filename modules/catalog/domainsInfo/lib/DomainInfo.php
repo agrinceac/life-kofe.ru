@@ -96,4 +96,16 @@ class DomainInfo extends \core\modules\base\ModuleDecorator
     {
         return $this->description;
     }
+
+    public function getDescriptionForPage($page)
+    {
+        if ($page == 'rent_for_office')
+            return $this->description;
+        elseif ($page == 'rent_when_broke')
+            return $this->description_rent_when_broke;
+        elseif ($page == 'rent_to_exhibition')
+            return $this->description_rent_to_exhibition;
+
+        return $this->description;
+    }
 }

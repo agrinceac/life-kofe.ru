@@ -17,6 +17,7 @@ function getKofeMashinesList() {
         $.ajax({
             url: '/catalog/ajaxGetKofeMashinesListBlock/',
             type: 'POST',
+            data: {page: $('.placeForKofeMashinesBlock').data('page')},
             dataType: 'json',
             success: function(data){
                 $('.placeForKofeMashinesBlock').html(data);

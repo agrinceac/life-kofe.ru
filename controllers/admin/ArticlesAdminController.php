@@ -1,5 +1,7 @@
 <?php
 namespace controllers\admin;
+use modules\articles\lib\ArticleConfig;
+
 class ArticlesAdminController extends \controllers\base\Controller
 {
 	use	\core\traits\controllers\Categories,
@@ -163,8 +165,13 @@ class ArticlesAdminController extends \controllers\base\Controller
 		if (isset($this->getREQUEST()[0]))
 			$article = $this->getObject($this->_config->getObjectClass(), $this->getREQUEST()[0]);
 
-		$tabs = array('editArticle' => 'Параметры и фото');
+		$tabs = array(
+		    'editArticle' => 'Параметры и фото',
+            );
 		$article->id ? $tabs = array_merge($tabs, array('files' => 'Файлы')) : '';
+
+        if (in_array($article->alias, (new ArticleConfig())->allowableRentPages))
+            $tabs = array_merge($tabs, ['rentPageProducts' => 'Кофемашины']);
 
 		$articles = new $this->objectsClass;
 		$this->setContent('article', $article)

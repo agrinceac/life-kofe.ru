@@ -119,6 +119,28 @@ class CatalogFactory extends \core\modules\base\ModuleAbstract
 		return $objects;
 	}
 
+    public function getGoodsById($nameOrCode, $domainAlias = null, $excludeStatuses = array())
+    {
+        $data = array();
+
+        $query = '(SELECT `objectId` as `id` FROM `tbl_catalog_domainsinfo` WHERE (('.$this->getWordsTextQuery($nameOrCode, $data).') OR `id` LIKE "%?s%") AND `domainAlias`="?s" ' ;
+        $query .= ' ) ';
+
+        $data = array_merge($data, array($nameOrCode, $domainAlias));
+
+        if (empty($domainAlias)){
+            $query .= ' UNION (SELECT `id` FROM `'.$this->mainTable().'` WHERE ('.$this->getWordsTextQuery($nameOrCode, $data).') OR `id` LIKE "%?s%")';
+            $data = array_merge($data, array($nameOrCode));
+        }
+
+        $result = \core\db\Db::getMysql()->rowsAssoc($query, $data);
+        $objects = array();
+        foreach ($result as $value) {
+            $objects[] = $this->getGoodById($value['id']);
+        }
+        return $objects;
+    }
+
 	private function getWordsTextQuery($text, &$data)
 	{
 		$words = explode(' ', $text);

@@ -13,6 +13,7 @@ class Article extends \core\modules\base\ModuleDecorator implements \interfaces\
 		$object = new \core\modules\statuses\StatusDecorator($object);
 		$object = new \core\modules\images\ImagesDecorator($object);
 		$object = new \core\modules\filesUploaded\FilesDecorator($object);
+        $object = new \modules\catalog\rentCoffeeMachines\lib\RentCoffeeMachineDecorator($object);
 		parent::__construct($object);
 	}
 

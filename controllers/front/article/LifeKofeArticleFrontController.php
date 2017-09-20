@@ -3,6 +3,7 @@ namespace controllers\front\article;
 use controllers\front\CatalogFrontController;
 use controllers\front\service\LifeKofeServiceFrontController;
 use modules\articles\lib\Article;
+use modules\articles\lib\ArticleConfig;
 use modules\catalog\catalog\lib\CatalogItemConfig;
 
 class LifeKofeArticleFrontController extends \controllers\front\article\ArticleFrontController
@@ -33,6 +34,20 @@ class LifeKofeArticleFrontController extends \controllers\front\article\ArticleF
             ->setContent('breadcrumbsShow', $article->breadcrumbsShow)
             ->setMetaFromObject($article)
             ->includeTemplate('index');
+    }
+
+    public function useful()
+    {
+        if ($this->isZeroRequestLevel()) {
+            $articles = $this->setMenuData(\modules\articles\lib\ArticleConfig::USEFUL_ARTICLE_CATEGORY_ID, ArticleConfig::ACTIVE_STATUS_ID);
+            $this->setContent('objects', $articles->setOrderBy('`date` ASC')->setQuantityItemsOnSubpageList(array(20))->setPager(2))
+                ->setMetaFromObject($articles->getCategories()->getObjectById(\modules\articles\lib\ArticleConfig::USEFUL_ARTICLE_CATEGORY_ID))
+                ->includeTemplate('articles/useful');
+        } elseif ($this->isFirstRequestLevel()){
+            $this->viewArticle($this->getREQUEST()[0]);
+        } else {
+            $this->redirect404();
+        }
     }
 
 	public function viewArticle($alias)

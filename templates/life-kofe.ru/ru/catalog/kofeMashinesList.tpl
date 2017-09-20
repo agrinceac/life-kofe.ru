@@ -8,7 +8,7 @@
             <!-- Options box -->
             <figure class="row options-box">
                 <picture class="col-lg-6 col-md-3 hidden-sm text-center">
-                    <img src="/images/bg/pages/rent_a_coffee_machine_for_an_exhibition/Saeco_Spidem_Villa.jpg" alt="Saeco Spidem Villa" class="img-responsive">
+                    <img src="<?=$object->getFirstPrimaryImage()->getImage('239x264')?>" alt="<?=$object->getFirstPrimaryImage()->getDescription()?>" class="img-responsive">
                 </picture>
                 <figcaption class="col-lg-6 col-md-9">
                     <h3 class="h4 text-uppercase"><?=$object->getInfo()->getName()?></h3>
@@ -18,7 +18,11 @@
             <!-- /Options box -->
         </div>
         <div class="col-lg-5 col-sm-6">
+            <?if ($page):?>
+                <?=$object->getInfo()->getDescriptionForPage($page)?>
+            <?else:?>
             <?=$object->getInfo()->getDescription()?>
+            <?endif?>
         </div>
     </div>
     <div class="actions text-center orderMashine">
