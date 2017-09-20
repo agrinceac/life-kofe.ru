@@ -11,10 +11,6 @@
 
     <?$this->setContent('breadcrumbsShow', true)->includeTemplate('breadCrumbs')?>
 
-    <?if(isset($isSearch) && $isSearch):?>
-    <h1>Результаты поиска</h1>
-    <?endif?>
-
     <?if(isset($categories) && $categories && $categories->count()):?>
     <section class="container">
         <ul class="list-of-products list-unstyled">

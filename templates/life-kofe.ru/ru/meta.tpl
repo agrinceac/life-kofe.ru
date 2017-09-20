@@ -17,6 +17,7 @@
 		$this->getController('imploder')
 			->css()
             ->add('global.css', '/css/'.$this->getCurrentDomainAlias().'/')
+            ->add('homePageStyleOverrides.css', '/css/'.$this->getCurrentDomainAlias().'/')
 //			->add('jquery-ui-1.10.1.custom.min.css','/js/extensions/ui/')
 			->add('errors.css', '/admin/js/base/actions/styles/')
 //			->add('loaderBlock.css', '/admin/js/base/actions/styles/')

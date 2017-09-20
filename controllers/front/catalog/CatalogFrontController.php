@@ -178,7 +178,7 @@ class CatalogFrontController extends \controllers\base\Controller
     protected function getCategoriesByFabricatorId($fabricatorId)
     {
         $catalog = $this->getCatalogObject();
-        $res = \core\db\Db::getMysql()->rowAssoc('SELECT DISTINCT `categoryId` FROM `'.$catalog->mainTable().'` '
+        $res = \core\db\Db::getMysql()->rowsAssoc('SELECT DISTINCT `categoryId` FROM `'.$catalog->mainTable().'` '
             . 'WHERE `fabricatorId` ='.$fabricatorId.' '
             . '	AND `statusId` NOT IN ('.implode(',', $this->getExludedStatusesArray()).')');
 
@@ -187,7 +187,7 @@ class CatalogFrontController extends \controllers\base\Controller
 
         $categoriesId = '';
         foreach($res as $item)
-            $categoriesId .= $item.',';
+            $categoriesId .= array_values($item)[0].',';
         $categoriesId = rtrim($categoriesId, ',');
 
         return (new CatalogCategories($this->_config))->filterByIds($categoriesId)

@@ -1,5 +1,15 @@
 <?include(TEMPLATES_ADMIN.'top.tpl');?>
 		<script type="text/javascript" src="/admin/js/base/system/tabs.js"></script>
+		<script type="text/javascript" src="/js/ajaxLoader.class.js"></script>
+		<script type="text/javascript" src="/modules/orders/js/autosuggest/autosuggest.js"></script>
+		<script type="text/javascript" src="/modules/orders/js/autosuggest/jquery.autoSuggest.js"></script>
+		<link rel="stylesheet" type="text/css" href="/modules/catalog/subGoods/css/style.css">
+		<script type="text/javascript" src="/modules/catalog/subGoods/js/subGoodsHandler.js"></script>
+		<script type="text/javascript" src="/modules/catalog/subGoods/js/subGoods.class.js"></script>
+		<link rel="stylesheet" type="text/css" href="/modules/orders/css/autoSuggest.css" />
+		<link rel="stylesheet" type="text/css" href="/modules/catalog/rentCoffeeMachines/css/style.css">
+		<script type="text/javascript" src="/modules/catalog/rentCoffeeMachines/js/rentCoffeeMachinesHandler.js"></script>
+		<script type="text/javascript" src="/modules/catalog/rentCoffeeMachines/js/rentCoffeeMachines.class.js"></script>
 		<div class="main single">
 			<div class="max_width">
 				<div class="action_buts">

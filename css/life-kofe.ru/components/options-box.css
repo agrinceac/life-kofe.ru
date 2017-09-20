@@ -10,6 +10,7 @@
 
 .options-box table td {
     padding-bottom: 4px;
+    padding-right: 18px;
 }
 
 .options-box table tr>td:last-child {

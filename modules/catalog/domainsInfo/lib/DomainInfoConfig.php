@@ -29,6 +29,8 @@ class DomainInfoConfig extends \core\modules\base\ModuleConfig
 		'name',
 		'smallDescription',
 		'description',
+		'description_rent_when_broke',
+		'description_rent_to_exhibition',
 		'text',
 		'metaTitle',
 		'metaKeywords',

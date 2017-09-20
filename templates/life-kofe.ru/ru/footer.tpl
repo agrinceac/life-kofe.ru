@@ -36,9 +36,7 @@
                                     <i class="glyphicon glyphicon-map"></i>
                                 </div>
                                 <figcaption class="media-body">
-                                    <a href="">
                                         <address>117279, Москва, ул. Профсоюзная д. 93</address>
-                                    </a>
                                 </figcaption>
                             </figure>
                         </li>
@@ -67,6 +65,9 @@
                             <?foreach($mainCategories as $mainCategory):?>
                             <li><a href="<?=$mainCategory->getPath()?>"><?=$mainCategory->getName()?></a></li>
                             <?endforeach;?>
+                            <li><a href="/useful">Полезные статьи</a></li>
+                            <li><a href="/docs">Инструкции</a></li>
+                            <li><a href="/schemes">Схемы кофемашин</a></li>
                         </ul>
                     </nav>
                     <?endif?>

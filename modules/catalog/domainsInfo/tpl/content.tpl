@@ -49,8 +49,16 @@
                                                     <td><textarea name="smallDescription" cols="95" rows="10"><?=$object->smallDescription?></textarea>
                                                 </tr>
                                                 <tr>
-                                                    <td class="first">Описание:</td>
+                                                    <td class="first">Описание <br>(для страницы аренда <br>в офис):</td>
                                                     <td><textarea name="description" cols="95" rows="10"><?=$object->description?></textarea>
+                                                </tr>
+                                                <tr>
+                                                    <td class="first">Описание <br>(для страницы аренда <br>когда сломалось):</td>
+                                                    <td><textarea name="description_rent_when_broke" cols="95" rows="10"><?=$object->description_rent_when_broke?></textarea>
+                                                </tr>
+                                                <tr>
+                                                    <td class="first">Описание <br>(для страницы аренда <br>на выставку):</td>
+                                                    <td><textarea name="description_rent_to_exhibition" cols="95" rows="10"><?=$object->description_rent_to_exhibition?></textarea>
                                                 </tr>
                                                 <tr>
                                                     <td class="first">Текст:</td>

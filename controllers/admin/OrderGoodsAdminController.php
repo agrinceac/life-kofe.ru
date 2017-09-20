@@ -18,6 +18,7 @@ class OrderGoodsAdminController extends \controllers\base\Controller
 		'ajaxEditOrderGood',
 		'ajaxGetAutosuggestGoods',
 		'ajaxGetAutosuggestGoodById',
+		'ajaxGetAutosuggestGoodsById',
 		'goodsSalesChart',
 		'categoriesSalesChart'
 	);
@@ -126,6 +127,41 @@ class OrderGoodsAdminController extends \controllers\base\Controller
 
 		echo json_encode($data);
 	}
+
+    protected function ajaxGetAutosuggestGoodsById()
+    {
+        $objects = \modules\catalog\CatalogFactory::getInstance()->getGoodsById($_GET["q"]);
+
+        foreach($objects as $object){
+            if( !in_array( $object->id, (new Complects())->getIdArrayInModuleObjects() ) ){
+                try {
+                    $json = array();
+                    $json['value'] = $object->id;
+                    $json['name'] = $object->getName();
+                    $json['code'] = $object->getCode();
+                    $json['price'] = $object->getPriceByMinQuantity() ? $object->getNativePriceByMinQuantity() : 'no price' ;
+                    $json['basePrice'] = $object->getBasePriceByMinQuantity() ? $object->getBasePriceByMinQuantity() : 'no basePrice';
+                    $json['availability'] = $object->getTotalAvailability();
+                    if($json['basePrice'] == null)
+                        $json['basePrice'] = '0';
+                } catch (\exceptions\ExceptionPrice $exc) {
+                    $json['price'] =  'no price';
+                    $json['basePrice'] =  'no basePrice';
+                }
+                $data[] = $json;
+            }
+        }
+
+        if(!isset($data)){
+            $data[0]['value'] = 'no value';
+            $data[0]['name'] = 'Результатов не найдено';
+            $data[0]['code'] = 'no code';
+            $data[0]['price'] = 'no price';
+            $data[0]['basePrice'] = 'no basePrice';
+        }
+
+        echo json_encode($data);
+    }
 
 	protected function ajaxGetAutosuggestGoodById()
 	{

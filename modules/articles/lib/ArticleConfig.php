@@ -16,6 +16,7 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 	const TOP_MENU_CATEGORY_ID = 1;
 
     const INDEX_ALIAS = 'about';
+    const USEFUL_ARTICLE_CATEGORY_ID = 3;
 
 	protected $objectClass  = '\modules\articles\lib\Article';
 	protected $objectsClass = '\modules\articles\lib\Articles';
@@ -25,6 +26,12 @@ class ArticleConfig extends \core\modules\base\ModuleConfig
 	public $imagesUrl  = 'data/images/articles/';
 	public $filesPath = 'files/articles/files/';
 	public $filesUrl  = 'data/files/articles/';
+
+    public $allowableRentPages = [
+        'rent_for_office',
+        'rent_when_broke',
+        'rent_to_exhibition',
+    ];
 
 	protected $table = 'articles'; // set value without preffix!
 	protected $idField = 'id';

@@ -22,7 +22,7 @@ main header.has-padding {
 }
 
 .coffee-box .img-circle var {
-    font-size: 36px;
+    font-size: 35px;
 }
 
 .coffee-box figcaption {
@@ -31,6 +31,14 @@ main header.has-padding {
 
 .coffee-box figcaption img {
     margin-bottom: 12px;
+}
+
+figure.coffee-box + table.table-options {
+    margin-top: 0px;
+}
+
+table.table-options.right-prop-block{
+    margin-top: 42px;
 }
 
 .list-of-sevices .img-circle {

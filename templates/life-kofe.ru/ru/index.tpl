@@ -150,6 +150,9 @@
                     </li>
                 </ul>
             </section>
+            <section class="container has-padding">
+                <?=$article->getText()?>
+            </section>
             <section id="serving-coffee-machines" class="bg-info has-padding">
                 <div class="container text-center">
                     <h2>Обслуживание кофемашин</h2>
