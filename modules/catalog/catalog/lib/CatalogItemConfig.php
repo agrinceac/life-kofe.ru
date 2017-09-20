@@ -9,8 +9,9 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 		\core\traits\validators\Sitemap,
 		\core\traits\adapters\Sitemap;
 
-    const KOFE_MASHINES_CATEGORY_ID =8;
-    const KOFE_CATEGORY_ID =9;
+    const KOFE_MASHINES_CATEGORY_ID = 8;
+    const KOFE_CATEGORY_ID = 9;
+    const CONSUMABLES_CATEGORY_ID = 4;
     const SPARE_PARTS_CATEGORY_ALIAS = 'spare_parts';
 
 	const ACTIVE_STATUS_ID  = 1;
@@ -122,7 +123,7 @@ class CatalogItemConfig extends \core\modules\base\ModuleConfig
 
     public function getHiddenCategoriesId()
     {
-        return [self::KOFE_CATEGORY_ID, self::KOFE_MASHINES_CATEGORY_ID];
+        return [self::KOFE_MASHINES_CATEGORY_ID];
     }
 
     public function getHiddenCategoriesIdString()
