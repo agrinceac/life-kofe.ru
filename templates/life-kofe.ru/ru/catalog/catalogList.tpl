@@ -19,7 +19,7 @@
                 <figure class="thumbnail product">
                     <picture
                         class="product--image"
-                        style="background-image: url(<?//=$subCategory->current()->getFirstPrimaryImage()->getImage('236x150')?>);"
+                        style="background-image: url('/images/bg/categories/<?=$category->alias?>.jpg');"
                     ></picture>
                     <figcaption class="caption">
                         <h5 class="product--name"><?=$category->getName()?></h5>

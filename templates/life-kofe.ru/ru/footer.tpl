@@ -51,6 +51,8 @@
                             <?foreach($topMenuArtilces as $topMenuArtilce):?>
                             <li><a href="<?=$topMenuArtilce->getPath()?>"><?=$topMenuArtilce->getName()?></a></li>
                             <?endforeach;?>
+                            <!--<li><a href="/rashodnye_materialy">Расходные материалы</a></li>
+                            <li><a href="/kofe">Кофе</a></li>-->
                         </ul>
                     </nav>
                     <?endif?>
@@ -62,14 +64,9 @@
                     <h5>Полезные ссылки</h5>
                     <nav>
                         <ul class="list-unstyled">
-                            <?foreach($mainCategories as $mainCategory):?>
-                            <li><a href="<?=$mainCategory->getPath()?>"><?=$mainCategory->getName()?></a></li>
-                            <?endforeach;?>
                             <li><a href="/useful">Полезные статьи</a></li>
                             <li><a href="/docs">Инструкции</a></li>
                             <li><a href="/schemes">Схемы кофемашин</a></li>
-                            <li><a href="/kofe">Кофе</a></li>
-                            <li><a href="/rashodnye_materialy">Расходные материалы</a></li>
                         </ul>
                     </nav>
                     <?endif?>

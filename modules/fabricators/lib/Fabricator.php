@@ -128,6 +128,11 @@ class Fabricator extends \core\modules\base\ModuleDecorator implements \interfac
         $filePath =  'images/bg/fabricators/'.$this->getAlias().'.svg';
         if(file_exists(DIR.$filePath))
             return '/'.$filePath;
+
+        $filePath2 =  'images/bg/fabricators/'.$this->getAlias().'.png';
+        if(file_exists(DIR.$filePath2))
+            return '/'.$filePath2;
+
         return $this->getFirstPrimaryImage()->getImage($size);
     }
 }
