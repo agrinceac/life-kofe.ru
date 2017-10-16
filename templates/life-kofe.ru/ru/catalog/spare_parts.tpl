@@ -9,7 +9,7 @@
     <?$this->getController('Catalog')->getFilter()?>
 
     <br><br>
-    <h2>Искать запчасти по производителю</h2>
+    <p class="h2">Искать запчасти по производителю</p>
     <link rel="stylesheet" href="/css/life-kofe.ru/pages/repairs.css">
     <script src="/js/fabricators.js"></script>
     <div class="placeForFabricatorsBlock"><input type="hidden" value="getPath"></div>
@@ -18,7 +18,7 @@
     <?if($subCategories->count()):?>
     <section id="search-for-spare-parts-for-type" class="has-padding">
         <div class="container">
-            <h2>Искать запчасти по типу</h2>
+            <p class="h2">Искать запчасти по типу</p>
             <nav>
                 <ul class="row">
                     <?foreach ($subCategories as $subCategory):?>
@@ -37,7 +37,7 @@
     <script src="/js/orderSpare.js"></script>
     <div class="col-sm-7">
         <form class="orderSpare" role="form">
-            <h2 class="text-left">Не нашли нужную запчасть?</h2>
+            <p class="h2 text-left">Не нашли нужную запчасть?</p>
             <p>У нас большая база поставщиков запчастей, и в случае если нет запчастей в нашем каталоге мы сможем помочь вам найти необходимые вам запчасти.</p>
             <ul class="list-unstyled row">
                 <li class="col-sm-6">

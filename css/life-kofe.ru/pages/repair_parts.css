@@ -33,3 +33,10 @@
 .list-of-brands>li>a:hover {
     opacity: .8;
 }
+
+h4{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px
+}

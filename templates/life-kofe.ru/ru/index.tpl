@@ -6,7 +6,7 @@
                 <div class="container">
                     <div class="row">
                         <section class="col-sm-6 text-center has-padding">
-                            <h1>Запчасти</h1>
+                            <p class="h1">Запчасти</p>
                             <p>и комплектующие для кофе машин</p>
                             <a
                                 href="/<?=$this->getController('Catalog')->_config->getSparePartsCategoryAlias()?>/"
@@ -28,7 +28,7 @@
                                     <img src="/images/bg/pages/about/instructions.svg">
                                 </picture>
                                 <figcation class="media-body">
-                                    <h5 class="media-heading text-uppercase">инструкции</h5>
+                                    <p class="media-heading text-uppercase h5">инструкции</p>
                                     <p class="text-muted">Более 20ти инструкций, для различный моделей кофемашин</p>
                                 </figcation>
                             </figure>
@@ -39,7 +39,7 @@
                                     <img src="/images/bg/pages/about/schemas.svg">
                                 </picture>
                                 <figcation class="media-body">
-                                    <h5 class="media-heading text-uppercase">схемы</h5>
+                                    <p class="media-heading text-uppercase h5">схемы</p>
                                     <p class="text-muted">Более 20ти схем, для различный моделей кофемашин</p>
                                 </figcation>
                             </figure>
@@ -50,7 +50,7 @@
                                     <img src="/images/bg/pages/about/video.svg">
                                 </picture>
                                 <figcation class="media-body">
-                                    <h5 class="media-heading text-uppercase">видео с ремонтом</h5>
+                                    <p class="media-heading text-uppercase h5">видео с ремонтом</p>
                                     <p class="text-muted">Более 20ти видео, с различными разборками кофемашин</p>
                                 </figcation>
                             </figure>
@@ -59,7 +59,7 @@
                 </div>
             </section>
             <section id="service-center-life-with-coffee-this" class="container has-padding">
-                <h2>Сервисный центр Жизнь с Кофе, это</h2>
+                <h1>Сервисный центр Жизнь с Кофе, это</h1>
                 <p>&nbsp;</p>
                 <ul class="list-of-media list-unstyled row">
                     <li class="col-md-3 col-sm-4">

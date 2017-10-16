@@ -11,7 +11,7 @@
                     <img src="<?=$object->getFirstPrimaryImage()->getImage('239x264')?>" alt="<?=$object->getFirstPrimaryImage()->getDescription()?>" class="img-responsive">
                 </picture>
                 <figcaption class="col-lg-6 col-md-9">
-                    <h3 class="h4 text-uppercase"><?=$object->getInfo()->getName()?></h3>
+                    <p class="h4 text-uppercase"><?=$object->getInfo()->getName()?></p>
                     <?=$object->getInfo()->getText()?>
                 </figcaption>
             </figure>

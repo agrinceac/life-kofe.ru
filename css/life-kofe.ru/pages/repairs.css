@@ -9,7 +9,7 @@
 			url(/images/bg/pages/repairs/page_header.jpg);
 }
 
-#repair-of-coffee-machines h4 {
+#repair-of-coffee-machines h4, #repair-of-coffee-machines .h4 {
     font-weight: normal;
 }
 
@@ -64,4 +64,11 @@
         display: table-cell;
         min-width: 90px;
     }
+}
+
+#advantages h5{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
 }

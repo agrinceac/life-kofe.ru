@@ -96,3 +96,10 @@
 .form-group>label {
     font-weight: initial;
 }
+
+h3, .bg-cover.bg-primary.has-padding .container h4{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px
+}

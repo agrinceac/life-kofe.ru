@@ -1,6 +1,6 @@
 <section id="how-much-coffee-do-you-need" class="bg-cover bg-primary has-padding">
     <div class="container">
-        <h2>Сколько кофе вам необходимо</h2>
+        <h4>Сколько кофе вам необходимо</h4>
         <p> </p>
         <form action="" method="POST" role="form">
             <ul class="flex-list list-unstyled">

@@ -105,7 +105,7 @@ label.h5 {
     color: #6d4d36;
 }
 
-#page-header h1 {
+#page-header h1, #page-header .h1{
     color: #fff;
 }
 
@@ -537,4 +537,11 @@ dl {
 }
 .photo_form input, .photo_form textarea {
     color: #937661!important;
+}
+
+.h2{
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
 }
