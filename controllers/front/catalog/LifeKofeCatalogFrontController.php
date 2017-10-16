@@ -96,7 +96,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
         $this->setSparePartsLevel()
             ->setLevel($this->getFabricatorPreString().$fabricator->getName())
-            ->setContent('h1', $articleForMeta->h1)
+            ->setContent('h1', $articleForMeta ? $articleForMeta->h1 : $fabricator->getName())
             ->setContent('categories', $this->getCategoriesByFabricatorId($fabricator->id))
             ->includeTemplate('catalog/catalogList');
     }
