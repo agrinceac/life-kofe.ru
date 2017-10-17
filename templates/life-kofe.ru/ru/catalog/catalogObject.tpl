@@ -83,7 +83,9 @@
                                 </picture>
                                 <div class="media-body">
                                     <h5 class="media-heading">Доставка по Москве:</h5>
-                                    <p>Бесплатно</p>
+                                    <p>до 1000р. - 400р.</p>
+                                    <p>от 1000р. до 4000р. - 300р.</p>
+                                    <p>свыше 4000р. - бесплатно</p>
                                 </div>
                             </figure>
                             <figure class="media">
