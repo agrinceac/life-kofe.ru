@@ -178,8 +178,10 @@ class CatalogFrontController extends \controllers\base\Controller
     protected function getCategoriesByFabricatorId($fabricatorId)
     {
         $catalog = $this->getCatalogObject();
+        $config = $this->_config;
         $res = \core\db\Db::getMysql()->rowsAssoc('SELECT DISTINCT `categoryId` FROM `'.$catalog->mainTable().'` '
             . 'WHERE `fabricatorId` ='.$fabricatorId.' '
+            . ' AND `categoryId` != '.$config::KOFE_CATEGORY_ID
             . '	AND `statusId` NOT IN ('.implode(',', $this->getExludedStatusesArray()).')');
 
         if(empty($res))

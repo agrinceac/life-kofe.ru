@@ -4,6 +4,27 @@ use modules\catalog\catalog\lib\CatalogItemConfig;
 
 class Fabricator extends \core\modules\base\ModuleDecorator implements \interfaces\IObjectToFrontend
 {
+    private $noClickIcon = array(
+        'fabricatorPage' => array(
+            'ulka',
+            'rancilio',
+            'rancilio-silvia',
+            'krups',
+            'oks'
+        ),
+        'catalogPage' => array(
+            'rancilio',
+            'rancilio-silvia',
+            'krups',
+            'melitta',
+            'rotel',
+            'electrolux',
+            'aeg',
+            'lavazza',
+            'danesi'
+        )
+    );
+
 	function __construct($objectId)
 	{
 		$object = new FabricatorObject($objectId);
@@ -62,11 +83,15 @@ class Fabricator extends \core\modules\base\ModuleDecorator implements \interfac
 
 	public function getPath()
 	{
+	    if(in_array($this->alias, $this->noClickIcon['catalogPage']))
+            return false;
         return '/'.(new CatalogItemConfig())->getSparePartsCategoryAlias().'/'.$this->alias.'/';
 	}
 
 	public function getNativePath()
     {
+        if(in_array($this->alias, $this->noClickIcon['fabricatorPage']))
+            return false;
         return '/'.$this->alias.'/';
     }
 

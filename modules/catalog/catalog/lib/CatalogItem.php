@@ -62,6 +62,12 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
 	public function getPath($domainAlias = false)
 	{
 		$currentDomainAlias = $domainAlias ? $domainAlias : $this->getCurrentDomainAlias();
+		$config = $this->getConfig();
+
+		if((int)$this->categoryId == (int)$config::KOFE_CATEGORY_ID)
+		    return $this->getCategory()->getTrunkedPath()
+                    .$this->getDomainInfoByDomainAlias($currentDomainAlias)->alias.'/';
+
 		return '/'.$this->getObjectConfig()->getSparePartsCategoryAlias()
             .'/'.$this->getFabricator()->alias
             .$this->getCategory()->getTrunkedPath()

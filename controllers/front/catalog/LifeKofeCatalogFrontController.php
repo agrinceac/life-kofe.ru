@@ -61,6 +61,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
 //		if ($contents === false){
 //			ob_start();
+
             $fabricator = (new Fabricators())->getObjectByAlias($this->getUriElement(2));
 			$this->setSparePartsLevel()
                 ->setLevel($this->getFabricatorPreString().$fabricator->getName(), $fabricator->getPath())
@@ -149,9 +150,11 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
 //		if ($contents === false){
 //			ob_start();
-            $this->setSparePartsLevel()
-                ->setLevel($this->getFabricatorPreString().$good->getFabricator()->getName(), $good->getFabricator()->getPath())
-                ->setLevel($good->getCategory()->name, $good->getCategory()->getPath())
+            $config = $this->_config;
+            if((int)$good->categoryId != (int)$config::KOFE_CATEGORY_ID)
+                $this->setSparePartsLevel()
+                    ->setLevel($this->getFabricatorPreString().$good->getFabricator()->getName(), $good->getFabricator()->getPath());
+            $this->setLevel($good->getCategory()->name, $good->getCategory()->getNativePath())
                 ->setLevel($good->getName());
 
 			$this->setMetaFromObject($good)
@@ -216,6 +219,9 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
 	protected function kofe()
     {
+        if($this->getUriElement(2))
+            return $this->pageDetect();
+
         $config = $this->_config;
         $category = $this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_CATEGORY_ID);
         $this->setLevel($category->getName(), $category->getNativePath());
@@ -307,9 +313,15 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
     protected function ajaxGetFabricatorsBlock()
     {
+        $config = $this->_config;
+        $allFabricatorsWithoutCofe = $this->getFabricators()
+            ->setSubquery(
+                'AND `id` NOT IN (SELECT DISTINCT `fabricatorId` FROM `'.$config->mainTable().'` WHERE `categoryId` = ?d)',
+                $config::KOFE_CATEGORY_ID
+            );
         ob_start();
         $this->setContent('pathMethod', ($this->getPost()['pathMethod']))
-            ->setContent('allFabricators', $this->getFabricators())
+            ->setContent('allFabricatorsWithoutCofe', $allFabricatorsWithoutCofe)
             ->includeTemplate('catalog/fabricatorsBlock');
         $contents = ob_get_contents();
         ob_end_clean();

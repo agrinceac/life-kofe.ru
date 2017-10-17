@@ -29,7 +29,7 @@
                                 </picture>
                                 <figcation class="media-body">
                                     <p class="media-heading text-uppercase h5">инструкции</p>
-                                    <p class="text-muted">Более 20ти инструкций, для различный моделей кофемашин</p>
+                                    <p class="text-muted">Более 50 инструкций по эксплуатации кофемашин в свободном доступе</p>
                                 </figcation>
                             </figure>
                         </li>
@@ -40,7 +40,7 @@
                                 </picture>
                                 <figcation class="media-body">
                                     <p class="media-heading text-uppercase h5">схемы</p>
-                                    <p class="text-muted">Более 20ти схем, для различный моделей кофемашин</p>
+                                    <p class="text-muted">Детальные схемы и сборочные чертежи внутреннего устройства кофемашин</p>
                                 </figcation>
                             </figure>
                         </li>
@@ -51,7 +51,7 @@
                                 </picture>
                                 <figcation class="media-body">
                                     <p class="media-heading text-uppercase h5">видео с ремонтом</p>
-                                    <p class="text-muted">Более 20ти видео, с различными разборками кофемашин</p>
+                                    <p class="text-muted">Подробные видео диагностики и ремонта кофемашин от профессиональных мастеров</p>
                                 </figcation>
                             </figure>
                         </li>
