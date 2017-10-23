@@ -160,8 +160,8 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
             $this->setLevel(
                     $good->getCategory()->name,
                     $isKofeCategory ? $good->getCategory()->getPath() : $good->getCategory()->getNativePath()
-                )
-                ->setLevel($good->getName());
+                );
+//                ->setLevel($good->getName());
 
 			$this->setMetaFromObject($good)
 				->setContent('object', $good)
