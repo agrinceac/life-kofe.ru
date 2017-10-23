@@ -5,7 +5,7 @@
 		<div class="main single">
 			<div class="max_width">
 				<div class="action_buts">
-					<a class="clearPageCache pointer"><img src="/admin/images/buttons/16px-si_clear_cache_icon.png" alt="" /> Очистить кэш контента</a>
+<!--					<a class="clearPageCache pointer"><img src="/admin/images/buttons/16px-si_clear_cache_icon.png" alt="" /> Очистить кэш контента</a>-->
 					<a class="clearPageCacheOk falseButton" style="display: none;"><img width="16" height="16" src="/admin/images/buttons/but_apply.png" alt="" /> Кэш контента успешно очищен</a>
 					<a class="formEditSubmit pointer" ><img src="/admin/images/buttons/save_object.png" alt="" /> Сохранить</a>
 					<a class="clearCache pointer"><img width="16" height="16" src="/admin/images/buttons/attention.png" alt="" /> Очистить кэш изображений</a>
