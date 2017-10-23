@@ -8,6 +8,8 @@ use modules\catalog\catalog\lib\CatalogItemConfig;
 
 class LifeKofeArticleFrontController extends \controllers\front\article\ArticleFrontController
 {
+    private $hideInTopMenuArticleIdsString = '56, 57';
+
 	public function __call($name, $arguments)
 	{
 		$this->defaultAction();
@@ -133,6 +135,12 @@ class LifeKofeArticleFrontController extends \controllers\front\article\ArticleF
 	}
 
 	public function getTopMenuArticles()
+    {
+        return $this->getFooterMenuArticles()
+                    ->setSubquery('AND `id` NOT IN (?s)', $this->hideInTopMenuArticleIdsString);
+    }
+
+    public function getFooterMenuArticles()
     {
         return $this->setMenuData($this->getConfig()->getTopMenuCategoryId(), $this->getConfig()->getActiveStatusId());
     }

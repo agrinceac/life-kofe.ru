@@ -43,7 +43,7 @@
                     </ul>
                 </li>
                 <li class="col-md-3 col-sm-4">
-                    <?$topMenuArtilces = $this->getController('Article')->getTopMenuArticles()?>
+                    <?$topMenuArtilces = $this->getController('Article')->getFooterMenuArticles()?>
                     <?if($topMenuArtilces->count()):?>
                     <h5>Меню</h5>
                     <nav>
