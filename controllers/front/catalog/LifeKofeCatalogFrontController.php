@@ -151,10 +151,16 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 //		if ($contents === false){
 //			ob_start();
             $config = $this->_config;
-            if((int)$good->categoryId != (int)$config::KOFE_CATEGORY_ID)
+
+            $isKofeCategory = (int)$good->categoryId != (int)$config::KOFE_CATEGORY_ID;
+            if($isKofeCategory){
                 $this->setSparePartsLevel()
                     ->setLevel($this->getFabricatorPreString().$good->getFabricator()->getName(), $good->getFabricator()->getPath());
-            $this->setLevel($good->getCategory()->name, $good->getCategory()->getNativePath())
+            }
+            $this->setLevel(
+                    $good->getCategory()->name,
+                    $isKofeCategory ? $good->getCategory()->getPath() : $good->getCategory()->getNativePath()
+                )
                 ->setLevel($good->getName());
 
 			$this->setMetaFromObject($good)
