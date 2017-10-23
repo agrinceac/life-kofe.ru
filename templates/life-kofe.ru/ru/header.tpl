@@ -13,7 +13,7 @@
                                     <i class="glyphicon glyphicon-map-marker"></i>
                                 </picture>
                                 <figcaption class="media-body text-left">
-                                    <address>Москва, ул. Профсоюзная, м. Беляево</address>
+                                    <address>Москва,<br>ул. Профсоюзная д. 93,<br>м. Беляево</address>
                                     <a href="/contacts/#driving-directions" class="text-orange">Схема проезда</a>
                                 </figcaption>
                             </figure>

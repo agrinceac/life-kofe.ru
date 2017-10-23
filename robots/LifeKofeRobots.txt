@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: */search/*
+Disallow: /shopcart/
 Host: life-kofe.ru
 Sitemap: http://life-kofe.ru/sitemap.xml
