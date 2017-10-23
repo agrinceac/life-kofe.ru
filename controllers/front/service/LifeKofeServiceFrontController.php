@@ -49,11 +49,11 @@ class LifeKofeServiceFrontController extends \controllers\base\Controller
 		if ($this->getSERVER()['REQUEST_URI'] != '/sitemap.xml')
 			return $this->redirect404();
 
-        $cacheKey = md5($this->getCurrentDomainAlias().'-'.__METHOD__.serialize($this->getREQUEST()->getArray()));
-		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
+//        $cacheKey = md5($this->getCurrentDomainAlias().'-'.__METHOD__.serialize($this->getREQUEST()->getArray()));
+//		$contents = \core\cache\Cacher::getInstance()->get($cacheKey);
 		$sitemap = new \core\seo\sitemap\Sitemap();
-
-		if ($contents === false){
+//
+//		if ($contents === false){
 
 //			mail('sashagrinceac@yahoo.com',
 //				'generating sitemap in VnMebelServiceFrontController',
@@ -76,8 +76,8 @@ class LifeKofeServiceFrontController extends \controllers\base\Controller
 					->addObjects($goodCategories);
 
 			$contents = $sitemap->getSitemapCode();
-			\core\cache\Cacher::getInstance()->set($contents, $cacheKey);
-		}
+//			\core\cache\Cacher::getInstance()->set($contents, $cacheKey);
+//		}
 		$sitemap->printXMLHeaders();
 		echo $contents;
 	}
