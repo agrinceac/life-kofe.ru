@@ -66,9 +66,9 @@ class CatalogCategory extends \core\modules\base\ModuleDecorator implements \int
 	}
 	/*   End: Main Data Methods */
 
-	public function getPath()
+	public function getPath($fabricatorAlias = null)
 	{
-        return $this->getPathByUrl();
+        return $this->getPathByUrl($fabricatorAlias);
 	}
 
 	public function getNativePath()
@@ -88,9 +88,9 @@ class CatalogCategory extends \core\modules\base\ModuleDecorator implements \int
         return str_replace('/'.(new CatalogItemConfig())->getSparePartsCategoryAlias(), '', $this->getNativePath());
     }
 
-    private function getPathByUrl()
+    private function getPathByUrl($fabricatorAlias = null)
     {
-        $fabricatorAlias = $this->getUriElement(2);
+        $fabricatorAlias = isset($fabricatorAlias) ? $fabricatorAlias : $this->getUriElement(2);
         $fabricator = ((new Fabricators())->getObjectByAlias($fabricatorAlias));
         if(!$fabricator)
             return false;

@@ -25,7 +25,10 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         'ajaxGetFabricatorsBlock',
 
         'getActiveCategories',
-        'getActiveObjects'
+        'getActiveObjects',
+
+        'getAllFabricatorsWithoutKofe',
+        'getCategoriesByFabricatorId'
 	);
 
 	protected function pageDetect()
@@ -319,19 +322,24 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 
     protected function ajaxGetFabricatorsBlock()
     {
+        ob_start();
+        $this->setContent('pathMethod', ($this->getPost()['pathMethod']))
+            ->setContent('allFabricatorsWithoutCofe', $this->getAllFabricatorsWithoutKofe())
+            ->includeTemplate('catalog/fabricatorsBlock');
+        $contents = ob_get_contents();
+        ob_end_clean();
+        $this->ajaxResponse($contents);
+    }
+
+    protected function getAllFabricatorsWithoutKofe()
+    {
         $config = $this->_config;
         $allFabricatorsWithoutCofe = $this->getFabricators()
             ->setSubquery(
                 'AND `id` NOT IN (SELECT DISTINCT `fabricatorId` FROM `'.$config->mainTable().'` WHERE `categoryId` = ?d)',
                 $config::KOFE_CATEGORY_ID
             );
-        ob_start();
-        $this->setContent('pathMethod', ($this->getPost()['pathMethod']))
-            ->setContent('allFabricatorsWithoutCofe', $allFabricatorsWithoutCofe)
-            ->includeTemplate('catalog/fabricatorsBlock');
-        $contents = ob_get_contents();
-        ob_end_clean();
-        $this->ajaxResponse($contents);
+        return $allFabricatorsWithoutCofe;
     }
 
     private function setSpecialMeta($object, $suffix)

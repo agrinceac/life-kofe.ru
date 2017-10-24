@@ -64,9 +64,9 @@
                     <h5>Полезные ссылки</h5>
                     <nav>
                         <ul class="list-unstyled">
-                            <li><a href="/useful">Полезные статьи</a></li>
-                            <li><a href="/docs">Инструкции</a></li>
-                            <li><a href="/schemes">Схемы кофемашин</a></li>
+                            <li><a href="/useful/">Полезные статьи</a></li>
+                            <li><a href="/docs/">Инструкции</a></li>
+                            <li><a href="/schemes/">Схемы кофемашин</a></li>
                         </ul>
                     </nav>
                     <?endif?>

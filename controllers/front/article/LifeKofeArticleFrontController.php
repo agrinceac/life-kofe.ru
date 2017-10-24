@@ -144,4 +144,9 @@ class LifeKofeArticleFrontController extends \controllers\front\article\ArticleF
     {
         return $this->setMenuData($this->getConfig()->getTopMenuCategoryId(), $this->getConfig()->getActiveStatusId());
     }
+
+    public function sitemap()
+    {
+        $this->includeTemplate('sitemap');
+    }
 }

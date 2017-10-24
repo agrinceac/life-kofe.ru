@@ -9,7 +9,7 @@ class LifeKofeServiceFrontController extends \controllers\base\Controller
 		\core\traits\controllers\Templates;
 
     private $actionsRedirects = array(
-        'sitemap.xml'   => 'sitemap',
+        'sitemap.xml'   => 'sitemapxml',
         'robots.txt'    => 'robots',
         'YML.xml'       => 'yml'
     );
@@ -44,7 +44,7 @@ class LifeKofeServiceFrontController extends \controllers\base\Controller
 		$this->redirect404();
 	}
 
-	protected function sitemap()
+	protected function sitemapxml()
 	{
 		if ($this->getSERVER()['REQUEST_URI'] != '/sitemap.xml')
 			return $this->redirect404();
