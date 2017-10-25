@@ -7,7 +7,7 @@ use modules\fabricators\lib\Fabricators;
 
 class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogFrontController
 {
-	const QUANTITY_ITEMS_ON_SUBPAGE = 8;
+	const QUANTITY_ITEMS_ON_SUBPAGE = 1;
 	const NO_PAGINATION_QUANTITY_ITEMS = 1000000;
     const ITEMS_IN_SELECT = 10;
 

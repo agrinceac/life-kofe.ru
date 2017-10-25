@@ -12,6 +12,10 @@
 		<meta name="description" content="<?=$this->getMetaDescription();?>" />
 		<meta name="keywords" content="<?=$this->getMetaKeywords();?>" />
 
+        <?if(isset($_GET['page'])  &&  !empty($_GET['page'])):?>
+        <link rel="canonical" href="http://<?=$_SERVER['HTTP_HOST'].\core\utils\Utils::ragp($_SERVER['REQUEST_URI'])?>" />
+        <?endif?>
+
         <link rel="stylesheet" type="text/css" href="/css/<?=$this->getCurrentDomainAlias()?>/bootstrap/bootstrap.min.css">
 		<?
 		$this->getController('imploder')
