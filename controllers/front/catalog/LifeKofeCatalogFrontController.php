@@ -214,7 +214,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
                 \core\utils\DataAdapt::textValid((new Fabricators())->getIdByAlias($this->getGet()['fabricator']))
             );
 
-        $objects->setOrderBy('priority ASC')
+        $objects->setOrderBy('priority ASC, id DESC')
                 ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
                 ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
@@ -236,7 +236,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         $this->setLevel($category->getName(), $category->getNativePath());
 
         $objects = $this->getObjectsByCategory($category)
-            ->setOrderBy('priority ASC')
+            ->setOrderBy('priority ASC, id DESC')
             ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
             ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
@@ -255,7 +255,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         $this->setLevel($category->getName(), $category->getNativePath());
 
         $objects = $this->getObjectsByCategory($category)
-            ->setOrderBy('priority ASC')
+            ->setOrderBy('priority ASC, id DESC')
             ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
             ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
@@ -290,14 +290,14 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
         return $this->getObjectsByCategory($this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_MASHINES_CATEGORY_ID))
             ->setSubquery(' AND `id` IN (SELECT `catalogItemId` FROM `' .$this->getObject('\modules\catalog\rentCoffeeMachines\lib\RentCoffeeMachineConfig')->mainTable().'`
             WHERE `rentPageId` =  ?d)', $article->id)
-            ->setOrderBy('priority ASC');
+            ->setOrderBy('priority ASC, id DESC');
     }
 
     private function getCofeMashines()
     {
         $config = $this->_config;
         return $this->getObjectsByCategory($this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_MASHINES_CATEGORY_ID))
-                    ->setOrderBy('priority ASC');
+                    ->setOrderBy('priority ASC, id DESC');
     }
 
     protected function ajaxGetHowMuchKofeBlock()
@@ -317,7 +317,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
     {
         $config = $this->_config;
         return $this->getObjectsByCategory($this->getCatalogObject()->getCategories()->getObjectById($config::KOFE_CATEGORY_ID))
-            ->setOrderBy('priority ASC');
+            ->setOrderBy('priority ASC, id DESC');
     }
 
     protected function ajaxGetFabricatorsBlock()
