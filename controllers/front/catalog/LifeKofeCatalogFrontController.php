@@ -71,7 +71,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 				 ->setLevel($category->getName());
 
             $objects = $this->getObjectsByCategory($category, $fabricator->id)
-                            ->setOrderBy('priority ASC')
+                            ->setOrderBy('priority ASC, id DESC')
                             ->setQuantityItemsOnSubpageList([self::QUANTITY_ITEMS_ON_SUBPAGE])
                             ->setPager(self::QUANTITY_ITEMS_ON_SUBPAGE);
 
