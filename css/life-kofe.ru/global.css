@@ -545,3 +545,7 @@ dl {
     margin-bottom: 24px;
     font-size: 24px;
 }
+
+.container .row a{
+    font-weight: 600;
+}
