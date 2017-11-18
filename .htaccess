@@ -27,4 +27,4 @@ RewriteCond %{REQUEST_FILENAME} !/PIE.htc
 RewriteCond %{REQUEST_FILENAME} !/live-cbea7ffc.txt
 RewriteCond %{REQUEST_FILENAME} !/yandex_6f91eaf6f6d4f7ba.txt
 
-RewriteRule !\.(js|ico|css|eot|svg|ttf|woff|woff2)$ index.php [L]
+RewriteRule !\.(js|ico|css|eot|svg|ttf|woff|woff2|png)$ index.php [L]
