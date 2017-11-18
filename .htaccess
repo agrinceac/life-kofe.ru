@@ -28,4 +28,4 @@ RewriteCond %{REQUEST_FILENAME} !/PIE.htc
 
 RewriteCond %{REQUEST_FILENAME} !/google746bef7326128ed3.html
 
-RewriteRule !\.(js|ico|css|eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|tif|pdf|doc|docx|txt|xls|xlsx|zip|rar)$ index.php [L]
+RewriteRule !\.(js|ico|css|eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|tif)$ index.php [L]
