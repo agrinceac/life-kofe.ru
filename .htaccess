@@ -4,6 +4,7 @@ RewriteBase /
 
 php_flag magic_quotes_gpc off
 
+
 RewriteCond %{REQUEST_FILENAME} /admin/(.*)
 RewriteCond %{REQUEST_FILENAME} !/admin/captcha.php
 
