@@ -112,6 +112,13 @@ class CatalogCategory extends \core\modules\base\ModuleDecorator implements \int
         return $path;
     }
 
+    public function getPathWithSearch()
+    {
+        if($this->parentId != 0)
+            return "/search/?category=".$this->alias;
+        return false;
+    }
+
 	private function getDomainInfo($object)
 	{
 		return (new \modules\catalog\categories\domainsInfo\lib\DomainsInfo($object))->getDomainInfoByObjectIdAndDomainAlias($object->id, $this->getCurrentDomainAlias());

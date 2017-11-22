@@ -198,7 +198,8 @@ class CatalogFrontController extends \controllers\base\Controller
 
     protected function getActiveCategories()
     {
-        $categories = (new \core\modules\categories\Categories($this->_config));
+//        $categories = (new \core\modules\categories\Categories($this->_config));
+        $categories = (new \modules\catalog\categories\CatalogCategories($this->_config));
         return $categories->setSubquery(' AND `statusId` = ?d', 1);
     }
 

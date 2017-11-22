@@ -2,6 +2,8 @@
 namespace core\seo\sitemap;
 class Sitemap
 {
+    use \core\traits\ObjectPool;
+
 	private $elements = array();
 	private $domain;
 
@@ -34,7 +36,16 @@ class Sitemap
 	public function addObject($object)
 	{
 		if ($object instanceof \interfaces\IObjectToFrontend){
-			return $this->addData($object->getPath(), $object->getSitemapPriority(), \core\utils\Dates::toDatetime($object->getLastUpdateTime()), $object->getChangeFreq());
+			return $this->addData(
+//			    $object->getPath(),
+
+
+
+                $this->getPath($object),
+
+                $object->getSitemapPriority(),
+                \core\utils\Dates::toDatetime($object->getLastUpdateTime()), $object->getChangeFreq()
+            );
 		}
 		throw new \Exception('Object '.get_class($object).' not implement interface IObjectToFrontend in class '.get_class($this).'!');
 	}
@@ -50,13 +61,20 @@ class Sitemap
 		return $this;
 	}
 
+	private function getPath($object)
+    {
+        if(method_exists($object, 'getPathWithSearch'))
+            if($object->getPathWithSearch())
+                return $object->getPathWithSearch();
+        return $object->getPath();
+    }
+
 	public function printSitemap()
 	{
 		echo $this->printXMLHeaders()
 				  ->getSitemapCode();
 	}
 
-//	private function printXMLHeaders()
 	public function printXMLHeaders()
 	{
 		header("Content-Type: text/xml");
@@ -69,7 +87,6 @@ class Sitemap
 		return $this;
 	}
 
-//	private function getSitemapCode()
 	public function getSitemapCode()
 	{
 		return $this->getSitemapHeader().$this->getSitemapBody().$this->getSitemapFooter();
@@ -94,8 +111,11 @@ class Sitemap
 		$code.='<loc>'.$this->domain.$element['loc'].'</loc>';
 		if ($element['priority'])
 			$code.='<priority>'.$element['priority'].'</priority>';
-		if ($element['lastmod'])
-			$code.='<lastmod>'.$element['lastmod'].'</lastmod>';
+
+//		if ($element['lastmod'])
+//			$code.='<lastmod>'.$element['lastmod'].'</lastmod>';
+        $code.='<lastmod>'.date('Y-m-d H:i:s').'</lastmod>';
+
 		if ($element['changefreq'])
 			$code.='<changefreq>'.$element['changefreq'].'</changefreq>';
 		$code .= '</url>';

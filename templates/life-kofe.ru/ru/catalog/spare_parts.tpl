@@ -23,7 +23,7 @@
                 <ul class="row">
                     <?foreach ($subCategories as $subCategory):?>
                     <li class="col-md-4 col-sm-6">
-                        <a href="/search/?category=<?=$subCategory->alias?>"><?=$subCategory->getName()?></a>
+                        <a href="<?=$subCategory->getPathWithSearch()?>"><?=$subCategory->getName()?></a>
                     </li>
                     <?endforeach?>
                 </ul>
