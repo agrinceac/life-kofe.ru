@@ -130,7 +130,8 @@ var shopcartHandler = function () {
             }
             else
                 $('.deliveryBlock').hide();
-            that.changeDeliveryInTable();
+            that.changeDeliveryInTable()
+                .checkIndexShow($(this));
         });
         return this;
     };
@@ -156,8 +157,17 @@ var shopcartHandler = function () {
     };
 
     this.changeDeliveryInTable = function () {
+        this.shopcartObject.errorsSendOrder.reset();
         var content = $('input:radio[name="deliveryType"]:checked').next('span').children().first('strong').html();
         $('.deliveryInTable').html(content);
         $('.deliveryInTableTr').slideDown();
-    }
+        return this;
+    };
+
+    this.checkIndexShow = function (handller$) {
+        if( $('input:radio[name="deliveryType"]:checked').hasClass('showIndexInput') )
+            $('[name=index]').closest('li').removeClass('hidden');
+        else
+            $('[name=index]').closest('li').addClass('hidden');
+    };
 };

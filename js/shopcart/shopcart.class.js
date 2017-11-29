@@ -169,10 +169,14 @@ var shopcart = function (sources) {
         var that = this;
         that.loader.setLoader(object);
 
+        var data = new FormData($('#sendOrderBlock')[0]);
+        if(!$('[name=index]').is(':visible'))
+            data.delete('index');
+
         $.ajax({
             url: that.ajax.sendOrder,
             type: 'POST',
-            data: new FormData($('#sendOrderBlock')[0]),
+            data: data,
             dataType: 'json',
             processData: false,
             contentType: false,

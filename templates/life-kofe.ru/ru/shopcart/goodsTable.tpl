@@ -183,7 +183,12 @@
                                             <label class="h5" for="apartament">Квартира</label>
                                             <input type="text" class="form-control" name="flat" placeholder="">
                                         </div>
-                                        <br><br>
+                                    </li>
+                                    <li class="col-sm-6 hidden">
+                                        <div class="form-group">
+                                            <label class="h5">Почтовый индекс</label>
+                                            <input type="text" class="form-control" name="index" placeholder="">
+                                        </div>
                                     </li>
                                 </ul>
                                 <div class="radio">
@@ -200,7 +205,7 @@
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="deliveryType" class="toggleDeliveryBlock"
+                                        <input type="radio" name="deliveryType" class="toggleDeliveryBlock showIndexInput"
                                            value="<?=\modules\shopcart\lib\ShopcartSources::getInstance()->getSource('delivery', 'expressInRussia')?>"
                                         >
                                         <span>
@@ -227,7 +232,7 @@
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="deliveryType" class="toggleDeliveryBlock"
+                                        <input type="radio" name="deliveryType" class="toggleDeliveryBlock showIndexInput"
                                            value="<?=\modules\shopcart\lib\ShopcartSources::getInstance()->getSource('delivery', 'postInRussia')?>"
                                         >
                                         <span>
@@ -241,6 +246,7 @@
                         </li>
                         <li class="col-sm-12">
                             <div class="form-group paymentTypes">
+                                <br><br>
                                 <label class="h5" for="customerSecondName">Способ оплаты</label>
                                 <div class="radio">
                                     <label>

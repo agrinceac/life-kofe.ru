@@ -23,6 +23,12 @@ class MailShopcart extends \core\mail\MailBase
         )
     );
 
+    private $indexRules  = array(
+        'index' => array(
+            'validation' => array('_validInt', array('notEmpty'=>true)),
+        )
+    );
+
 	public function rules()
 	{
 		return $this->rules;
@@ -66,6 +72,8 @@ class MailShopcart extends \core\mail\MailBase
     {
         if($this->isBySelfFreeCharge())
             $this->rules = array_merge($this->rules, $this->deliveryRules);
+        if(isset($this->data['index']))
+            $this->rules = array_merge($this->rules, $this->indexRules);
         return $this;
     }
 

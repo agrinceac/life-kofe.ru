@@ -36,6 +36,10 @@
                         <br />
                         Квартира: <strong><?=$data['flat']?></strong>
                         <?endif;?>
+                        <?if(isset($data['index']) && $data['index']):?>
+                        <br />
+                        Индекс: <strong><?=$data['index']?></strong>
+                        <?endif;?>
                         <?if(isset($data['deliveryType']) && $data['deliveryType']):?>
                         <br />
                         Доставка: <strong><?=$data['deliveryType']?></strong>
