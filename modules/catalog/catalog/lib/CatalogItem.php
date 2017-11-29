@@ -281,14 +281,11 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
         return false;
     }
 
-    public function getShowPrice()
+    public function getShowPrice($quantity = false)
     {
-//        if($this->getOffer())
-//            return $this->getNativePriceByQuantity(1) - $this->getOffer()->getDiscountSum();
-//        if($this->isSubGoodsExists()){
-//            return $this->getSubgoods()->getCost();
-//        }
-        return $this->getPriceByMinQuantity();
+        if(!$quantity)
+            return $this->getPriceByMinQuantity();
+        return $this->getPriceByQuantity((int)$quantity);
     }
 
     public function getShowOldPrice()

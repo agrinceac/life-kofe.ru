@@ -41,7 +41,7 @@
                     </td>
                     <td>
                         <strong class="price">
-                            <var><?=number_format( $object->getShowPrice(), 2, '.', ' ' )?></var>
+                            <var><?=number_format( $object->getShowPrice($object->getQuantity()), 2, '.', ' ' )?></var>
                             <label>р.</label>
                         </strong>
                     </td>
