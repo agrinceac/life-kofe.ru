@@ -73,8 +73,10 @@
 												<?=$i?>.
 												<img src="<?=$_SERVER['HTTP_HOST'].$subGood->getGood()->getFirstPrimaryImage()->getUserImage('30x0')?>" alt="">
 												<a href="<?=$_SERVER['HTTP_HOST'].$subGood->getGood()->getPath()?>"><?=$subGood->getGood()->getName()?></a>
+                                                <?if($object->getArticul()):?>
                                                 <br>
                                                 Артикул <?=$subGood->getArticul()?>
+                                                <?endif?>
 											</td>
 										</tr>
 										<?$i++; endforeach?>
