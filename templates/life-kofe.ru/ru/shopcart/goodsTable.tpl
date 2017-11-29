@@ -35,6 +35,7 @@
                     <td>
                         <h4><a href="<?=$object->getPath()?>" target="_blank"><?=$object->getName()?></a></h4>
                         <p class="model"><?=$object->getFabricator()->getName()?></p>
+                        <p class="model">Артикул <?=$object->getArticul()?></p>
                     </td>
                     <td>
                         <strong class="price">

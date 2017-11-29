@@ -57,7 +57,11 @@
 							<tr>
 								<td><div class="image"><a href="<?=$_SERVER['HTTP_HOST'].$good->getPath()?>"><img src="http://<?= $_SERVER['HTTP_HOST'].$good->getFirstPrimaryImage()->getFocusImage('100x0')?>" alt="" /></a></div></td>
 								<td>
-									<p class="name"><a href="<?=$_SERVER['HTTP_HOST'].$good->getPath()?>"><?=$good->getName()?></a></p>
+									<p class="name">
+                                        <a href="<?=$_SERVER['HTTP_HOST'].$good->getPath()?>"><?=$good->getName()?></a>
+                                        <br>
+                                        Артикул <?=$good->getArticul()?>
+                                    </p>
 									<?if($good->getSubgoods() && $good->getSubgoods()->count()):?>
 									<table>
 										<tr>
@@ -69,6 +73,8 @@
 												<?=$i?>.
 												<img src="<?=$_SERVER['HTTP_HOST'].$subGood->getGood()->getFirstPrimaryImage()->getUserImage('30x0')?>" alt="">
 												<a href="<?=$_SERVER['HTTP_HOST'].$subGood->getGood()->getPath()?>"><?=$subGood->getGood()->getName()?></a>
+                                                <br>
+                                                Артикул <?=$subGood->getArticul()?>
 											</td>
 										</tr>
 										<?$i++; endforeach?>
