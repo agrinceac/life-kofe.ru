@@ -20,15 +20,11 @@
 					</tr>
 					<tr>
 						<td align="right">Сайт: </td>
-						<td><b>http://mebel-mebel.ru</b></td>
+						<td><b>http://life-kofe.ru</b></td>
 					</tr>
 					<tr>
 						<td align="right">E-mail: </td>
-						<td><b>info@mebel-mebel.ru</b></td>
-					</tr>
-					<tr>
-						<td align="right">Телефон: </td>
-						<td><b>+7 (495) 789-36-48</b></td>
+						<td><b>info@life-kofe.ru</b></td>
 					</tr>
 				</table>
 			</td>

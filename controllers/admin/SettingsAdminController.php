@@ -48,14 +48,14 @@ class SettingsAdminController extends \controllers\base\Controller
 		$this->ajaxResponse($cache->clearAll());
 	}
 
-	public function ajaxClearPageCache()
-	{
-        $run = "find /var/www/vnm/data/www/mebel-mebel.ru/cache/CacheLite/ -name 'cache_*' -type f -print -delete;";
-//        $run = "find /var/www/webdelouranus/data/www/vn-mebel-a.webdelo.org/cache/CacheLite/ -name 'cache_*' -type f -print -delete;";
-        $res = exec($run);
-        $this->ajaxResponse( $res=='' ? 0 : 1 );
-
-//		$this->ajaxResponse(\core\cache\Cacher::getInstance()->removeAll());
-	}
+//	public function ajaxClearPageCache()
+//	{
+//        $run = "find /var/www/vnm/data/www/mebel-mebel.ru/cache/CacheLite/ -name 'cache_*' -type f -print -delete;";
+////        $run = "find /var/www/webdelouranus/data/www/vn-mebel-a.webdelo.org/cache/CacheLite/ -name 'cache_*' -type f -print -delete;";
+//        $res = exec($run);
+//        $this->ajaxResponse( $res=='' ? 0 : 1 );
+//
+////		$this->ajaxResponse(\core\cache\Cacher::getInstance()->removeAll());
+//	}
 }
 ?>
