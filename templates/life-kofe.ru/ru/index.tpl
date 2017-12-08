@@ -59,7 +59,7 @@
                 </div>
             </section>
             <section id="service-center-life-with-coffee-this" class="container has-padding">
-                <h1>Сервисный центр Жизнь с Кофе, это</h1>
+                <h1>Сервисный центр Жизнь с Кофе</h1>
                 <p>&nbsp;</p>
                 <ul class="list-of-media list-unstyled row">
                     <li class="col-md-3 col-sm-4">
@@ -78,8 +78,15 @@
                                 <img src="/images/bg/pages/about/tools.svg" alt="Инструменты">
                             </picture>
                             <figcaption>
-                                <p class="text-muted"><span class="text-primary">Ремонт кофемашин</span>
-                                    <br>на дому и в сервисном центре</p>
+                                <p class="text-muted">
+                                    <span class="text-primary">
+                                        <a href="/repairs/">
+                                            Ремонт кофемашин
+                                        </a>
+                                    </span>
+                                    <br>
+                                    на дому и в сервисном центре
+                                </p>
                             </figcaption>
                         </figure>
                     </li>
@@ -89,8 +96,15 @@
                                 <img src="/images/bg/pages/about/basket.svg" alt="Корзина">
                             </picture>
                             <figcaption>
-                                <p class="text-muted"><span class="text-primary">Продажа кофемашин и средств для ухода</span>
-                                    <br>в наличии и под заказ</p>
+                                <p class="text-muted">
+                                    <span class="text-primary">
+                                        <a href="/rashodnye_materialy/">
+                                            Продажа кофемашин и средств для ухода
+                                        </a>
+                                    </span>
+                                    <br>
+                                    в наличии и под заказ
+                                </p>
                             </figcaption>
                         </figure>
                     </li>
@@ -100,8 +114,15 @@
                                 <img src="/images/bg/pages/about/settings.svg" alt="Запчасть">
                             </picture>
                             <figcaption>
-                                <p class="text-muted"><span class="text-primary">Замена запчастей</span>
-                                    <br>дросистемы, кофемолки, капучинатора и т. д.</p>
+                                <p class="text-muted">
+                                    <span class="text-primary">
+                                        <a href="/spare_parts/">
+                                            Замена запчастей
+                                        </a>
+                                    </span>
+                                    <br>
+                                    гидросистемы, кофемолки, капучинатора и т. д.
+                                </p>
                             </figcaption>
                         </figure>
                     </li>
@@ -133,8 +154,15 @@
                                 <img src="/images/bg/pages/about/beans.svg" alt="Зерна">
                             </picture>
                             <figcaption>
-                                <p class="text-muted"><span class="text-primary">Бесплатная аренда кофемашин</span>
-                                    <br>при покупке нужного объема кофе;</p>
+                                <p class="text-muted">
+                                    <span class="text-primary">
+                                        <a href="/rent/​">
+                                            Бесплатная аренда кофемашин
+                                        </a>
+                                    </span>
+                                    <br>
+                                    при покупке нужного объема кофе
+                                </p>
                             </figcaption>
                         </figure>
                     </li>
@@ -144,7 +172,14 @@
                                 <img src="/images/bg/pages/about/car.svg" alt="Автомобиль">
                             </picture>
                             <figcaption>
-                                <p class="text-muted"><span class="text-primary">Доставка кофе по Москве</span> (в пределах МКАД) в течение суток.</p>
+                                <p class="text-muted">
+                                    <span class="text-primary">
+                                        <a href="/payment/">
+                                            Доставка кофе по Москве
+                                        </a>
+                                    </span>
+                                    в пределах МКАД) в течение суток
+                                </p>
                             </figcaption>
                         </figure>
                     </li>
