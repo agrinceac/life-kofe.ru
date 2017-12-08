@@ -26,7 +26,7 @@
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </div>
                                 <figcaption class="media-body">
-                                    <a href="email:info@life-kofe.ru">info@life-kofe.ru</a>
+                                    <a href="mailto:info@life-kofe.ru">info@life-kofe.ru​</a>
                                 </figcaption>
                             </figure>
                         </li>
