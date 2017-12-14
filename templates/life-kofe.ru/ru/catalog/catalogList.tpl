@@ -17,15 +17,19 @@
             <?foreach($categories as $category):?>
             <li class="col-lg-3 col-md-4 col-sm-6">
                 <figure class="thumbnail product">
-                    <picture
-                        class="product--image"
-                        style="background-image: url('/images/bg/categories/<?=$category->alias?>.jpg');"
-                    ></picture>
+                    <a href="<?=$category->getPath()?>">
+                        <picture
+                            class="product--image"
+                            style="background-image: url('/images/bg/categories/<?=$category->alias?>.jpg');"
+                        ></picture>
+                    </a>
                     <figcaption class="caption">
-                        <h5 class="product--name"><?=$category->getName()?></h5>
-                        <div class="text-center">
-                            <a href="<?=$category->getPath()?>" class="btn btn-link">Подробнее</a>
-                        </div>
+                        <h5 class="product--name text-center align-middle">
+                            <a href="<?=$category->getPath()?>"><?=$category->getName()?></a>
+                        </h5>
+<!--                        <div class="text-center">-->
+<!--                            <a href="--><?//=$category->getPath()?><!--" class="btn btn-link">Подробнее</a>-->
+<!--                        </div>-->
                     </figcaption>
                 </figure>
             </li>
