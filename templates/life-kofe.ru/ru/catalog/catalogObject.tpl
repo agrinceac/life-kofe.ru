@@ -128,9 +128,11 @@
                         <h4 class="modal-title">Купить в один клик - <?=$object->getInfo()->getName()?></h4>
                     </div>
                     <div class="modal-body">
-                        <p>Укажите свой номер телефона и наши менеджеры свяжутся с вами в ближайшее время.</p>
+                        <p>Укажите свой номер телефона а также email и наши менеджеры свяжутся с вами в ближайшее время.</p>
                         <p>
-                            <input type="text" name="phoneNumber" class="form-control" placeholder="">
+                            <input type="text" name="phoneNumber" class="form-control" placeholder="+7 (999) 999-9999">
+                            <br>
+                            <input type="text" name="email" class="form-control" placeholder="999@999.ru">
                             <input class="oneClickGoodId" name="goodId" type="hidden" value="<?=$object->id?>"/>
                             <br>
                             <button class="btn btn-default sendOrderByOneClickSubmit">Отправить</button>

@@ -31,6 +31,9 @@
 				<p>
 					Позвонить клиенту по номеру: <b style="font-size: 20px;"><?=$clientPhoneNumber?></b>
 				</p>
+                <p>
+                    Клиент указал email: <b style="font-size: 20px;"><?=$clientEmail?></b>
+                </p>
 				<?if($managers):?>
 				Менеджеры :&nbsp;&nbsp;&nbsp;&nbsp;
 				<?foreach($managers as $manager):?>

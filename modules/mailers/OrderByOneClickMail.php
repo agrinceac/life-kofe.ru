@@ -9,7 +9,10 @@ class OrderByOneClickMail extends \core\mail\MailBase
     private $rules = array(
         'phoneNumber' => array(
             'validation' => array('_validNotEmpty'),
-        )
+        ),
+        'email' => array(
+            'validation' => array('_validEmail', array('notEmpty'=>true)),
+        ),
     );
 
     public function rules()
@@ -44,6 +47,7 @@ class OrderByOneClickMail extends \core\mail\MailBase
 				->Subject('Клиент просит позвонить по номеру '.$this->data['phoneNumber'].', для оформления заказа на '.SEND_FROM)
 				->Content('good', $good)
 				->Content('clientPhoneNumber', $this->data['phoneNumber'])
+                ->Content('clientEmail', $this->data['email'])
 				->Content('managers', $managers)
 				->BodyFromFile('mailOrderByOneClickContent.tpl')
 				->Send();

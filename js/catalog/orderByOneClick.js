@@ -25,7 +25,8 @@ $(function (){
             type: 'POST',
             data: {
                 'goodId' : $('.sendOrderByOneClick [name=goodId]').val(),
-                'phoneNumber' : $('.sendOrderByOneClick [name=phoneNumber]').val()
+                'phoneNumber' : $('.sendOrderByOneClick [name=phoneNumber]').val(),
+                'email' : $('.sendOrderByOneClick [name=email]').val()
             },
             dataType: 'json',
             beforeSend: function () {
