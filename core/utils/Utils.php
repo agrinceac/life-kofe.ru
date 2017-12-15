@@ -162,5 +162,11 @@ class Utils
 			$string .= $object->$property.',';
 		return substr($string, 0, strlen($string)-1);
 	}
+
+	public static function strReplaceFirst($find, $replace, $text)
+    {
+        $find = '/' . preg_quote($find, '/') . '/';
+        return preg_replace($find, $replace, $text, 1);
+    }
 }
 ?>
