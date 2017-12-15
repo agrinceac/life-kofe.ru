@@ -36,6 +36,7 @@ class LifeKofeCatalogFrontController extends \controllers\front\catalog\CatalogF
 		$alias = $this->getLastElementFromRequest();
 
 		$good = $this->getGoodByAlias($alias);
+
 		if ($good && !$good->isHidden()){
 			if ($this->checkObjectPath($good)){
 				if($this->isDownloadFileRequested())

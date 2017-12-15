@@ -303,7 +303,12 @@ class CatalogItem extends \modules\catalog\CatalogGood implements \interfaces\IO
 
     public function isHidden()
     {
-        return $this->getCategory()->isHidden();
+        return $this->getCategory()->isHidden()  ||  !$this->isActive();
+    }
+
+    public function isActive()
+    {
+        return (int)$this->statusId == (int)$this->getConfig()->getActiveStatusesString();
     }
 
     public function getArticul(){return $this->articul;}
