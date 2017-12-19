@@ -111,6 +111,15 @@
                         </script>
                         <!-- /Yandex.Metrika counter -->
 
+                        <!-- Global site tag (gtag.js) - Google Analytics -->
+                        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111449929-1"></script>
+                        <script>
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+
+                            gtag('config', 'UA-111449929-1');
+                        </script>
                     </p>
                 </li>
             </ul>
