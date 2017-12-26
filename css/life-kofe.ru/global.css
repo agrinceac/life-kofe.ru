@@ -10,6 +10,14 @@
     font-size: 14px;
 }
 
+main a:not(.btn) {
+    text-decoration: underline;
+}
+
+main a:hover:not(.btn) {
+    color: #3b73af;
+}
+
 #header,
 #footer {
     background-image: url(/images/bg/footer_bg.png);
