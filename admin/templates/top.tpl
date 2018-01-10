@@ -6,7 +6,7 @@
 				<div class="pop_rel">
 					<div class="login_box">
 						<div class="login_in">
-							<p class="logo"><a href="#"><img src="/admin/images/logo/auth_logo.png" alt="" /></a></p>
+                            <p class="logo"><a href="#"><img src="/images/bg/logo.svg" alt="" /></a></p>
 							<table width="100%">
 								<tr>
 									<td>Логин:</td>

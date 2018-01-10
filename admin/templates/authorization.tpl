@@ -13,7 +13,7 @@
 				<div class="max_width">
 					<div class="login_box">
 						<div class="login_in">
-							<p class="logo"><a href="http://webdelo.org"><img src="/admin/images/logo/auth_logo.png" alt="" /></a></p>
+                            <p class="logo"><a href="#"><img src="/images/bg/logo.svg" alt="" /></a></p>
 							<form action="<?=$this->link?>" method="post">
 								<table width="100%">
 									<tr>
